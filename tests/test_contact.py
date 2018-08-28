@@ -1,8 +1,16 @@
 import pytest
+import sys
 
-# from contact import *
+sys.path.insert(0, '../src/')
+
+from contact import *
 
 class TestContact():
 
-    def test_name(self):
-        assert 2 == 2
+    def test_contact_has_name(self):
+        contact = Contact("Justyna", 123456)
+        assert contact.name == "Justyna"
+
+    def test_contact_has_telephone(self):
+        contact = Contact("Justyna", 123456)
+        assert contact.telephone == 123456
