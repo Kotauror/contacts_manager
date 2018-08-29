@@ -9,8 +9,10 @@ class TestContact():
 
     def test_contact_has_name(self):
         contact = Contact("Justyna", 123456)
+
         assert contact.name == "Justyna"
 
     def test_contact_has_telephone(self):
         contact = Contact("Justyna", 123456)
+
         assert contact.telephone == 123456
