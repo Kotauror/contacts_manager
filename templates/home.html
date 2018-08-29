@@ -1,9 +1,11 @@
 {% extends 'layout.html' %}
 
 {% block body %}
+<div id="welcome_message">
 Welcome to the contacts manager
+</div>
   {% for contact in contacts %}
-  <div class="single_contact">
+  <div id="single_contact">
     {{contact.name}}
     {{contact.telephone}}
   </div>
