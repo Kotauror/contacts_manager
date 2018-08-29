@@ -2,16 +2,13 @@
   <head>
     <meta charset="utf-8">
     <title>Contacts Manager</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/general.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
   </head>
   <body>
+  <div id="welcome-message">Contacts Manager</div>
     <div id="messages">{{ message }}</div>
-    <form action="/add" method="post">
-        Enter the name of new contact:<br>
-        <input type="text" name="name" id="form-name"><br>
-        Enter the telephone of new contact:<br>
-        <input type="text" name="telephone" id="form-telephone"><br>
-        <input type="submit" value="Submit" id="submit">
-    </form>
     {% block body %} {% endblock %}
   </body>
 </html>

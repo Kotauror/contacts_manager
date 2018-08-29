@@ -9,8 +9,6 @@ from contact import *
 app = Flask(__name__)
 
 contacts_book = ContactsBook()
-contact = Contact("Justyna", 123)
-contacts_book.add_contact(contact)
 
 @app.route('/')
 def index():

@@ -1,13 +1,19 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-<div id="welcome_message">
-Welcome to the contacts manager
-</div>
+  <form action="/add" method="post" id="form">
+      Name:
+      <input type="text" name="name" id="form-name"><br>
+      Telephone:
+      <input type="number" name="telephone" id="form-telephone"><br>
+      <input type="submit" value="Add contact" id="submit">
+  </form>
+
   {% for contact in contacts %}
-  <div id="single_contact">
-    {{contact.name}}
-    {{contact.telephone}}
-  </div>
+    <div id="single-contact">
+      <i class="far fa-user"></i> {{contact.name}}<br>
+      <i class="fas fa-phone"></i> {{contact.telephone}}
+    </div>
   {% endfor %}
+
 {% endblock %}
