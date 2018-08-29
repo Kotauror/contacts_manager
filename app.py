@@ -20,7 +20,7 @@ def addContact():
     telephone = request.form['telephone']
     contact = Contact(name, telephone)
     contacts_book.add_contact(contact)
-    return render_template('home.html', contacts = contacts_book.get_contacts(), message = "Success")
+    return render_template('home.html', contacts = contacts_book.get_contacts())
 
 if __name__ == '__main__':
     app.run(debug=True)

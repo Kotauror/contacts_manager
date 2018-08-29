@@ -22,6 +22,5 @@ class TestFrontEnd(unittest.TestCase):
         driver.find_element_by_id("form-name").send_keys("Kota")
         driver.find_element_by_id("form-telephone").send_keys("123")
         driver.find_element_by_id("submit").click()
-        element = driver.find_element_by_id("messages")
 
-        assert element.text == "Success"
+        assert ("Kota" in driver.page_source)

@@ -19,11 +19,6 @@ html {
   padding: 0.2em;
 }
 
-#messages {
-  text-align: center;
-  background-color: red;
-}
-
 #form {
   text-align: center;
   margin-bottom 2em;
