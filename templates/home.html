@@ -2,4 +2,10 @@
 
 {% block body %}
 Welcome to the contacts manager
+  {% for contact in contacts %}
+  <div class="single_contact">
+    {{contact.name}}
+    {{contact.telephone}}
+  </div>
+  {% endfor %}
 {% endblock %}
