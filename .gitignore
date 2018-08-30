@@ -3,3 +3,5 @@
 /tests/__pycache__
 /tests/.pytest_cache/
 /tests/.test_contact.py.swp
+/.pytest_cache/
+*.swp
