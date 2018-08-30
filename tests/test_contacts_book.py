@@ -28,5 +28,4 @@ class TestContactsBook():
         contacts_book.add_contact(contact2)
         contacts = contacts_book.get_contacts()
 
-        print(isinstance(contacts, list))
         assert len(contacts) == 2

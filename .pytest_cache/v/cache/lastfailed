@@ -1,0 +1,4 @@
+{
+  "tests/test_contact.py": true,
+  "tests/test_contacts_book.py": true
+}
