@@ -14,4 +14,4 @@
 - go to `/tests`
 - run `pytest`
 
-![app screenshot of app](https://image.ibb.co/iTDrv9/Zrzut_ekranu_2018_08_30_o_14_55_24.png
+![app screenshot of app](https://image.ibb.co/iTDrv9/Zrzut_ekranu_2018_08_30_o_14_55_24.png)
