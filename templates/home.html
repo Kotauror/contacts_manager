@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <form action="/add" method="post" id="form">
+      Name:
+      <input type="text" name="name" id="form-name"><br>
+      Telephone:
+      <input type="number" name="telephone" id="form-telephone"><br>
+      <input type="submit" value="Add contact" id="submit">
+  </form>
+
+  {% for contact in contacts %}
+    <div id="single-contact">
+      <i class="far fa-user"></i> {{contact.name}}<br>
+      <i class="fas fa-phone"></i> {{contact.telephone}}
+    </div>
+  {% endfor %}
+
+{% endblock %}
