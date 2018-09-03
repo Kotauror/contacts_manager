@@ -35,10 +35,7 @@ class TestContactsBook():
     def test_contacts_book_removes_contacts(self):
         contacts_book = ContactsBook()
         contacts_book.add_contact(self.get_contact())
-
-        assert len(contacts_book.get_contacts()) == 1
-
         id_of_contact = contacts_book.contacts[0].id
-
         contacts_book.remove_contact(str(id_of_contact))
+
         assert len(contacts_book.get_contacts()) == 0
