@@ -8,3 +8,8 @@ class ContactsBook():
 
     def get_contacts(self):
         return self.contacts
+
+    def remove_contact(self, contact_id_to_remove):
+        for contact in self.contacts:
+            if contact.id == contact_id_to_remove:
+                self.contacts.remove(contact)
