@@ -15,7 +15,7 @@
       <i class="fas fa-phone"></i> {{contact.telephone}}
       <form action="/contacts/delete" method="post">
         <input type="hidden" value={{contact.id}} name="id">
-        <input type="submit" value="delete" name="delete">
+        <input type="submit" value="delete" name="delete" id="delete">
       </form>
     </div>
   {% endfor %}

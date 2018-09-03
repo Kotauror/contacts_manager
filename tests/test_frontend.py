@@ -24,3 +24,11 @@ class TestFrontEnd(unittest.TestCase):
         driver.find_element_by_id("submit").click()
 
         assert ("Kota" in driver.page_source)
+
+    def test_delete_contact(self):
+        driver = webdriver.Chrome("/usr/local/bin/chromedriver")
+        driver.set_page_load_timeout(10)
+        driver.get("http://127.0.0.1:5000/contacts")
+        driver.find_element_by_id("delete").click()
+
+        assert not ("Kota" in driver.page_source)
