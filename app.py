@@ -12,7 +12,7 @@ contacts_book = ContactsBook()
 
 @app.route('/contacts', methods=['GET'])
 def index():
-    return render_template('home.html', contacts = contacts_book.get_contacts())
+    return render_template('home.html', contacts=contacts_book.get_contacts())
 
 @app.route('/contacts', methods=['POST'])
 def addContact():
@@ -25,6 +25,11 @@ def deleteContact():
     id_to_remove = request.form['id']
     contacts_book.remove_contact(id_to_remove)
     return redirect(url_for('index'))
+
+@app.route('/contacts/edit', methods=['POST'])
+def editUser():
+    id_to_edit = request.form['id']
+    return render_template('edit.html', id_of_contact=id_to_edit)
 
 if __name__ == '__main__':
     app.run(debug=True)
