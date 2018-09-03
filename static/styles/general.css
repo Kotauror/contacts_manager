@@ -20,8 +20,13 @@ html {
   height: 4em;
 }
 
-#form {
+#form-add {
   text-align: center;
+}
+
+#form-delete {
+  text-align: center;
+  display: contents;
 }
 
 #delete {
