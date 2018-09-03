@@ -10,11 +10,11 @@ app = Flask(__name__)
 
 contacts_book = ContactsBook()
 
-@app.route('/')
+@app.route('/contacts', methods=['GET'])
 def index():
     return render_template('home.html', contacts = contacts_book.get_contacts())
 
-@app.route('/add', methods=['POST'])
+@app.route('/contacts', methods=['POST'])
 def addContact():
     name = request.form['name']
     telephone = request.form['telephone']
