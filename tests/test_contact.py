@@ -8,14 +8,12 @@ from contact import *
 
 class TestContact():
 
-    def test_contact_has_name(self):
+    def get_contact(self):
         stubForm = ImmutableMultiDict([('name', 'Justyna'), ('telephone', '123456')])
-        contact = Contact(stubForm)
+        return Contact(stubForm)
 
-        assert contact.name == "Justyna"
+    def test_contact_has_name(self):
+        assert self.get_contact().name == "Justyna"
 
     def test_contact_has_telephone(self):
-        stubForm = ImmutableMultiDict([('name', 'Justyna'), ('telephone', '123456')])
-        contact = Contact(stubForm)
-
-        assert contact.telephone == '123456'
+        assert self.get_contact().telephone == '123456'
