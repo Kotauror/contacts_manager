@@ -13,3 +13,9 @@ class ContactsBook():
         for contact in self.contacts:
             if str(contact.id) == contact_id_to_remove:
                 self.contacts.remove(contact)
+
+    def update_contact(self, contact_id_to_change, name, telephone):
+        for contact in self.contacts:
+            if str(contact.id) == contact_id_to_change:
+                contact.name = name
+                contact.telephone = telephone

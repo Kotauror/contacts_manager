@@ -39,3 +39,11 @@ class TestContactsBook():
         contacts_book.remove_contact(str(id_of_contact))
 
         assert len(contacts_book.get_contacts()) == 0
+
+    def test_contacts_book_updates_name(self):
+        contacts_book = ContactsBook()
+        contacts_book.add_contact(self.get_contact())
+        id_of_contact = contacts_book.contacts[0].id
+        contacts_book.update_contact(str(id_of_contact), name="Dominika", telephone='123456')
+
+        assert contacts_book.get_contacts()[0].name == "Dominika"
