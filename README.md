@@ -3,7 +3,8 @@
 ## Requirements:
 - python flask
 - pytest 
-- selenium 
+- selenium
+- Chrome webdriver 
 
 ## Run the app
 - clone the repo 
@@ -11,6 +12,10 @@
 - open `http://127.0.0.1:5000/` in a browser
 
 ## Run the tests
+- set the driver path to your chromedriver in the test_frontend file:
+
+```driver = webdriver.Chrome("/usr/local/bin/chromedriver")```
+
 - go to `/tests`
 - run `pytest`
 
