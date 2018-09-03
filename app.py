@@ -16,9 +16,7 @@ def index():
 
 @app.route('/contacts', methods=['POST'])
 def addContact():
-    name = request.form['name']
-    telephone = request.form['telephone']
-    contact = Contact(name, telephone)
+    contact = Contact(request.form)
     contacts_book.add_contact(contact)
     return render_template('home.html', contacts = contacts_book.get_contacts())
 
