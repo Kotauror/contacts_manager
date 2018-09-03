@@ -29,7 +29,7 @@ html {
   display: contents;
 }
 
-#delete {
-  float: right !important;
-  font-size: 3em;
+#form-edit {
+  text-align: center;
+  display: contents;
 }

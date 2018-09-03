@@ -12,10 +12,16 @@
   {% for contact in contacts %}
     <div id="single-contact">
       <i class="far fa-user"></i> {{contact.name}}<br>
-      <i class="fas fa-phone"></i> {{contact.telephone}}
+      <i class="fas fa-phone"></i> {{contact.telephone}}<br>
+
       <form action="/contacts/delete" method="post" id="form-delete">
         <input type="hidden" value={{contact.id}} name="id">
         <input type="submit" value="❌ delete" name="delete" id="delete">
+      </form>
+
+      <form action="" method="" id="form-edit">
+        <input type="hidden" value={{contact.id}} name="id">
+        <input type="submit" value="✏️  edit" name="edit" id="edit">
       </form>
     </div>
   {% endfor %}
