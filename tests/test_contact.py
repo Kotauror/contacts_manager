@@ -17,3 +17,6 @@ class TestContact():
 
     def test_contact_has_telephone(self):
         assert self.get_contact().telephone == '123456'
+
+    def test_contact_has_id(self):
+        assert self.get_contact().id
