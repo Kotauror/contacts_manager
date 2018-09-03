@@ -19,7 +19,6 @@ def addContact():
     contact = Contact(request.form)
     contacts_book.add_contact(contact)
     return redirect(url_for('index'))
-    #return render_template('home.html', contacts = contacts_book.get_contacts())
 
 @app.route('/contacts/delete', methods=['POST'])
 def deleteContact():
