@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-  <form action="/contacts" method="post" id="form">
+  <form action="/contacts" method="post" id="form-add">
       Name:
       <input type="text" name="name" id="form-name"><br>
       Telephone:
@@ -13,6 +13,10 @@
     <div id="single-contact">
       <i class="far fa-user"></i> {{contact.name}}<br>
       <i class="fas fa-phone"></i> {{contact.telephone}}
+      <form action="/contacts/delete" method="post" id="form-delete">
+        <input type="hidden" value={{contact.id}} name="id">
+        <input type="submit" value="❌ delete" name="delete" id="delete">
+      </form>
     </div>
   {% endfor %}
 
