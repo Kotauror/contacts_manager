@@ -17,9 +17,14 @@ html {
   background-color: #ff6363;
   margin-bottom: 0.5em;
   padding: 0.2em;
+  height: 4em;
 }
 
 #form {
   text-align: center;
-  margin-bottom 2em;
+}
+
+#delete {
+  float: right !important;
+  font-size: 3em;
 }
