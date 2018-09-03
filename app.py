@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import sys
 
 sys.path.insert(0, 'src')
@@ -18,13 +18,14 @@ def index():
 def addContact():
     contact = Contact(request.form)
     contacts_book.add_contact(contact)
-    return render_template('home.html', contacts = contacts_book.get_contacts())
+    return redirect(url_for('index'))
+    #return render_template('home.html', contacts = contacts_book.get_contacts())
 
 @app.route('/contacts/delete', methods=['POST'])
 def deleteContact():
     id_to_remove = request.form['id']
     contacts_book.remove_contact(id_to_remove)
-    return render_template('home.html', contacts = contacts_book.get_contacts())
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
