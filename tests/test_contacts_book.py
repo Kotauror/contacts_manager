@@ -39,6 +39,6 @@ class TestContactsBook():
         assert len(contacts_book.get_contacts()) == 1
 
         id_of_contact = contacts_book.contacts[0].id
-        contacts_book.remove_contact(id_of_contact)
 
+        contacts_book.remove_contact(str(id_of_contact))
         assert len(contacts_book.get_contacts()) == 0

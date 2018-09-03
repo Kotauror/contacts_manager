@@ -20,5 +20,11 @@ def addContact():
     contacts_book.add_contact(contact)
     return render_template('home.html', contacts = contacts_book.get_contacts())
 
+@app.route('/contacts/delete', methods=['POST'])
+def deleteContact():
+    id_to_remove = request.form['id']
+    contacts_book.remove_contact(id_to_remove)
+    return render_template('home.html', contacts = contacts_book.get_contacts())
+
 if __name__ == '__main__':
     app.run(debug=True)

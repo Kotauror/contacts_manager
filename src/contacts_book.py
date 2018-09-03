@@ -11,5 +11,5 @@ class ContactsBook():
 
     def remove_contact(self, contact_id_to_remove):
         for contact in self.contacts:
-            if contact.id == contact_id_to_remove:
+            if str(contact.id) == contact_id_to_remove:
                 self.contacts.remove(contact)
