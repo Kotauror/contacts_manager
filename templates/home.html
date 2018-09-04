@@ -14,8 +14,7 @@
       <i class="far fa-user"></i> {{contact.name}}<br>
       <i class="fas fa-phone"></i> {{contact.telephone}}<br>
 
-      <form action="/contacts/delete" method="post" id="form-delete">
-        <input type="hidden" value={{contact.id}} name="id">
+      <form action="/contacts/delete/id={{contact.id}}" method="post" id="form-delete">
         <input type="submit" value="❌ delete" name="delete" id="delete">
       </form>
 

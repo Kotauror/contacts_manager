@@ -20,10 +20,9 @@ def addContact():
     contacts_book.add_contact(contact)
     return redirect(url_for('index'))
 
-@app.route('/contacts/delete', methods=['POST'])
-def deleteContact():
-    id_to_remove = request.form['id']
-    contacts_book.remove_contact(id_to_remove)
+@app.route('/contacts/delete/id=<string:id_to_delete>', methods=['POST'])
+def deleteContact(id_to_delete):
+    contacts_book.remove_contact(id_to_delete)
     return redirect(url_for('index'))
 
 @app.route('/contacts/edit', methods=['POST'])
