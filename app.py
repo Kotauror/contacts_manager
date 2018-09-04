@@ -27,9 +27,17 @@ def deleteContact():
     return redirect(url_for('index'))
 
 @app.route('/contacts/edit', methods=['POST'])
-def editUser():
+def findUserToEdit():
     id_to_edit = request.form['id']
     return render_template('edit.html', id_of_contact=id_to_edit)
+
+@app.route('/contacts/edit/id', methods=['POST'])
+def editUser():
+    id_to_edit = request.form['id']
+    name = request.form['name']
+    telephone = request.form['telephone']
+    contacts_book.update_contact(id_to_edit, name, telephone)
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -36,3 +36,18 @@ class TestFrontEnd(unittest.TestCase):
         driver.find_element_by_id("delete").click()
 
         assert not ("Another fake contact" in driver.page_source)
+
+    def test_edit_contact(self):
+        driver = webdriver.Chrome("/usr/local/bin/chromedriver")
+        driver.set_page_load_timeout(10)
+        driver.get("http://127.0.0.1:5000/contacts")
+        driver.find_element_by_id("form-name").send_keys("Another fake contact")
+        driver.find_element_by_id("form-telephone").send_keys("123")
+        driver.find_element_by_id("submit").click()
+        driver.find_element_by_id("edit").click()
+        driver.find_element_by_id("form-name").send_keys("Edited fake contact")
+        driver.find_element_by_id("form-telephone").send_keys("123")
+        driver.find_element_by_id("submit").click()
+
+        assert not ("Another fake contact" in driver.page_source)
+        assert ("Edited fake contact" in driver.page_source)
