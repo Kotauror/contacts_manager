@@ -2,25 +2,23 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import sys
 import config, create_app
-
 sys.path.insert(0, 'src')
-
 from contacts_book import *
 from contact import *
 
 app = create_app.create_app(app_config=config.DevelopmentConfig)
 db = SQLAlchemy(app)
 
-contacts_book = ContactsBook()
-
 @app.route('/contacts', methods=['GET'])
 def index():
-    return render_template('home.html', contacts=contacts_book.get_contacts())
+    contacts = Contact.query.all()
+    return render_template('home.html', contacts=contacts)
 
 @app.route('/contacts', methods=['POST'])
 def addContact():
-    contact = Contact(request.form)
-    contacts_book.add_contact(contact)
+    contact = Contact(request.form['name'], request.form['telephone'])
+    db.session.add(contact)
+    db.session.commit()
     return redirect(url_for('index'))
 
 @app.route('/contacts/delete/id=<string:id_to_delete>', methods=['POST'])
