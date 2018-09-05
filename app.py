@@ -19,7 +19,9 @@ def addContact():
 
 @app.route('/contacts/delete/id=<string:id_to_delete>', methods=['POST'])
 def deleteContact(id_to_delete):
-    contacts_book.remove_contact(id_to_delete)
+    contact_to_delete = Contact.query.filter_by(id=id_to_delete).first()
+    db.session.delete(contact_to_delete)
+    db.session.commit()
     return redirect(url_for('index'))
 
 @app.route('/contacts/edit', methods=['POST'])
