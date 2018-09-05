@@ -31,9 +31,10 @@ def findUserToEdit():
 
 @app.route('/contacts/edit/id=<string:id_to_edit>', methods=['POST'])
 def editUser(id_to_edit):
-    name = request.form['name']
-    telephone = request.form['telephone']
-    contacts_book.update_contact(id_to_edit, name, telephone)
+    contact_to_update = Contact.query.filter_by(id=id_to_edit).first()
+    contact_to_update.name = request.form['name']
+    contact_to_update.telephone = request.form['telephone']
+    db.session.commit()
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
