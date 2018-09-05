@@ -1,22 +1,37 @@
 import pytest
 import sys
 from werkzeug.datastructures import ImmutableMultiDict
-
 sys.path.insert(0, '../src/')
-
+sys.path.append('../')
+from settings import db
 from contact import *
 
 class TestContact():
 
-    def get_contact(self):
-        stubForm = ImmutableMultiDict([('name', 'Justyna'), ('telephone', '123456')])
-        return Contact(stubForm)
+    def test_add_contact_to_db(self):
+        contact = Contact("Justynka", '12345')
+        db.session.add(contact)
+        db.session.commit()
 
-    def test_contact_has_name(self):
-        assert self.get_contact().name == "Justyna"
+        assert Contact.query.filter_by(name="Justynka").first()
 
-    def test_contact_has_telephone(self):
-        assert self.get_contact().telephone == '123456'
+    def test_remove_contact_from_db(self):
+        contact = Contact("Igor", '123456')
+        db.session.add(contact)
+        db.session.commit()
+        contact_to_delete = Contact.query.filter_by(name="Igor").first()
+        db.session.delete(contact_to_delete)
 
-    def test_contact_has_id(self):
-        assert self.get_contact().id
+        assert not Contact.query.filter_by(name="Igor").first()
+
+    def test_edit_contact_in_db(self):
+        contact = Contact('Kozia', '1234567')
+        db.session.add(contact)
+        db.session.commit()
+        contact_to_update = Contact.query.filter_by(name="Kozia").first()
+        contact_to_update.name = "Kozia 2"
+        contact_to_update.telephone = "1111"
+        db.session.commit
+
+        assert Contact.query.filter_by(name="Kozia 2").first()
+        assert not Contact.query.filter_by(name="Kozia").first()
