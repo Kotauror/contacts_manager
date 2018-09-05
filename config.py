@@ -1,6 +1,6 @@
 import os
 
-class BaseConfig:
+class BaseConfig():
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         'DATABASE_URI', 'postgresql://localhost/contacts')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -8,5 +8,5 @@ class BaseConfig:
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
 
-class TestConfig(DevelopmentConfig):
+class TestConfig():
     TESTING = True
