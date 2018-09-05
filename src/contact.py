@@ -1,6 +1,6 @@
 import sys
 sys.path.append('../')
-from database import db
+from settings import db
 
 class Contact(db.Model):
 

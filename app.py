@@ -1,13 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import sys
-import config, create_app
 sys.path.insert(0, 'src')
-from contacts_book import *
 from contact import *
-
-app = create_app.create_app(app_config=config.DevelopmentConfig)
-db = SQLAlchemy(app)
+from settings import app, db
 
 @app.route('/contacts', methods=['GET'])
 def index():
