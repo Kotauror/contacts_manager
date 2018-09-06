@@ -2,11 +2,11 @@
 
 {% block body %}
 
-{% if messages is none: %}
-  {% set messages = "" %}
+{% if message is none: %}
+  {% set message = "" %}
 {% endif %}
 
-<div id="messages">{{messages}}</div>
+<div id="messages">{{message}}</div>
   <form action="/contacts" method="post" id="form-add">
       Name:
       <input type="text" name="name" id="form-name"><br>
