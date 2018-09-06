@@ -24,6 +24,7 @@ class TestFrontEnd(unittest.TestCase):
         driver.find_element_by_id("submit").click()
 
         assert ("Fake contact" in driver.page_source)
+        assert ("Contact added successfully" in driver.page_source)
 
         driver.find_element_by_id("delete-Fake contact").click()
 
@@ -37,6 +38,7 @@ class TestFrontEnd(unittest.TestCase):
         driver.find_element_by_id("delete-Another fake contact").click()
 
         assert not ("Another fake contact" in driver.page_source)
+        assert ("Contact deleted successfully" in driver.page_source)
 
     def test_edit_contact(self):
         driver = webdriver.Chrome("/usr/local/bin/chromedriver")
@@ -52,5 +54,6 @@ class TestFrontEnd(unittest.TestCase):
 
         assert not ("Another fake contact" in driver.page_source)
         assert ("Edited fake contact" in driver.page_source)
+        assert ("Contact edited successfully" in driver.page_source)
 
         driver.find_element_by_id("delete-Edited fake contact").click()

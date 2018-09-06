@@ -1,6 +1,12 @@
 {% extends 'layout.html' %}
 
 {% block body %}
+
+{% if messages is none: %}
+  {% set messages = "" %}
+{% endif %}
+
+<div id="messages">{{messages}}</div>
   <form action="/contacts" method="post" id="form-add">
       Name:
       <input type="text" name="name" id="form-name"><br>
