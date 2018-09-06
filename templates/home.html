@@ -15,7 +15,7 @@
       <i class="fas fa-phone"></i> {{contact.telephone}}<br>
 
       <form action="/contacts/delete/id={{contact.id}}" method="post" id="form-delete">
-        <input type="submit" value="❌ delete" name="delete" id="delete">
+        <input type="submit" value="❌ delete" name="delete" id="delete-{{contact.name}}">
       </form>
 
       <form action="contacts/edit" method="post" id="form-edit">
