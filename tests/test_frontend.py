@@ -25,7 +25,7 @@ class TestFrontEnd(unittest.TestCase):
 
         assert ("Fake contact" in driver.page_source)
 
-        driver.find_element_by_id("delete-Fake contact").click() #removes contact if needed
+        driver.find_element_by_id("delete-Fake contact").click()
 
     def test_delete_contact(self):
         driver = webdriver.Chrome("/usr/local/bin/chromedriver")
