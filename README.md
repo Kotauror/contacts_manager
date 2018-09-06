@@ -1,10 +1,7 @@
 # Contacts Manager web app
 
 ## Requirements:
-- python flask
-- pytest 
-- selenium
-- Chrome webdriver 
+- see requirements.txt file
 
 ## Run the app
 - clone the repo 
