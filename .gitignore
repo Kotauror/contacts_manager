@@ -5,3 +5,4 @@
 /tests/.test_contact.py.swp
 /.pytest_cache/
 *.swp
+/env/
