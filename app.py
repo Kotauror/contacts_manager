@@ -1,10 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import sys
-sys.path.insert(0, 'src')
-from contact import *
-from messages import *
+from src.messages import *
 from settings import app, db
+from src.contact import *
 
 @app.route('/contacts', methods=['GET'])
 def index():

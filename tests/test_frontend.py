@@ -47,7 +47,7 @@ class TestFrontEnd(unittest.TestCase):
         driver.find_element_by_id("form-name").send_keys("Another fake")
         driver.find_element_by_id("form-telephone").send_keys("222")
         driver.find_element_by_id("submit").click()
-        driver.find_element_by_id("edit").click()
+        driver.find_element_by_id("edit-Another fake").click()
         driver.find_element_by_id("form-name").send_keys("Edited fake contact")
         driver.find_element_by_id("form-telephone").send_keys("444")
         driver.find_element_by_id("submit").click()

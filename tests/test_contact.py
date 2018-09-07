@@ -2,7 +2,7 @@ import pytest
 import sys
 from werkzeug.datastructures import ImmutableMultiDict
 sys.path.insert(0, '../src/')
-sys.path.append('../')
+from contact import *
 from flask_sqlalchemy import SQLAlchemy
 from contact import *
 import config, create_app
