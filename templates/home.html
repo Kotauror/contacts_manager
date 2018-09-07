@@ -26,7 +26,7 @@
 
       <form action="contacts/edit" method="post" id="form-edit">
         <input type="hidden" value={{contact.id}} name="id">
-        <input type="submit" value="✏️  edit" name="edit" id="edit">
+        <input type="submit" value="✏️  edit" name="edit" id="edit-{{contact.name}}">
       </form>
     </div>
   {% endfor %}
