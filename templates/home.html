@@ -1,6 +1,12 @@
 {% extends 'layout.html' %}
 
 {% block body %}
+
+{% if message is none: %}
+  {% set message = "" %}
+{% endif %}
+
+<div id="messages">{{message}}</div>
   <form action="/contacts" method="post" id="form-add">
       Name:
       <input type="text" name="name" id="form-name"><br>
@@ -15,7 +21,7 @@
       <i class="fas fa-phone"></i> {{contact.telephone}}<br>
 
       <form action="/contacts/delete/id={{contact.id}}" method="post" id="form-delete">
-        <input type="submit" value="❌ delete" name="delete" id="delete">
+        <input type="submit" value="❌ delete" name="delete" id="delete-{{contact.name}}">
       </form>
 
       <form action="contacts/edit" method="post" id="form-edit">

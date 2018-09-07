@@ -1,29 +1,36 @@
 from flask import Flask, render_template, request, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
 import sys
-
 sys.path.insert(0, 'src')
-
-from contacts_book import *
 from contact import *
-
-app = Flask(__name__)
-
-contacts_book = ContactsBook()
+from messages import *
+from settings import app, db
 
 @app.route('/contacts', methods=['GET'])
 def index():
-    return render_template('home.html', contacts=contacts_book.get_contacts())
+    contacts = Contact.query.all()
+    message = request.args.get('message')
+    return render_template('home.html', contacts=contacts, message=message)
 
 @app.route('/contacts', methods=['POST'])
 def addContact():
-    contact = Contact(request.form)
-    contacts_book.add_contact(contact)
-    return redirect(url_for('index'))
+    try:
+        contact = Contact(request.form['name'], request.form['telephone'])
+        db.session.add(contact)
+        db.session.commit()
+        return redirect(url_for('index', message=Messages.ADD_SUCCESS.value))
+    except:
+        return redirect(url_for('index', message=Messages.ADD_ERROR.value))
 
 @app.route('/contacts/delete/id=<string:id_to_delete>', methods=['POST'])
 def deleteContact(id_to_delete):
-    contacts_book.remove_contact(id_to_delete)
-    return redirect(url_for('index'))
+    try:
+        contact_to_delete = Contact.query.filter_by(id=id_to_delete).first()
+        db.session.delete(contact_to_delete)
+        db.session.commit()
+        return redirect(url_for('index', message=Messages.DELETE_SUCCESS.value))
+    except:
+        return redirect(url_for('index', message=Messages.DELETE_ERROR.value))
 
 @app.route('/contacts/edit', methods=['POST'])
 def findUserToEdit():
@@ -32,10 +39,14 @@ def findUserToEdit():
 
 @app.route('/contacts/edit/id=<string:id_to_edit>', methods=['POST'])
 def editUser(id_to_edit):
-    name = request.form['name']
-    telephone = request.form['telephone']
-    contacts_book.update_contact(id_to_edit, name, telephone)
-    return redirect(url_for('index'))
+    try:
+        contact_to_update = Contact.query.filter_by(id=id_to_edit).first()
+        contact_to_update.name = request.form['name']
+        contact_to_update.telephone = request.form['telephone']
+        db.session.commit()
+        return redirect(url_for('index', message=Messages.EDIT_SUCCESS.value))
+    except:
+        return redirect(url_for('index', message=Messages.EDIT_ERROR.value))
 
 if __name__ == '__main__':
     app.run(debug=True)
