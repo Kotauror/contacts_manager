@@ -1,10 +1,15 @@
+import sys
+sys.path.append('../')
+from settings import db
+
 class ContactsBook():
 
     def __init__(self):
         self.contacts = []
 
     def add_contact(self, contact):
-        self.contacts.append(contact)
+        db.session.add(contact)
+        db.session.commit()
 
     def get_contacts(self):
         return self.contacts

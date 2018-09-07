@@ -4,6 +4,9 @@ import sys
 from src.messages import *
 from settings import app, db
 from src.contact import *
+from src.contacts_book import *
+
+contacts_book = ContactsBook()
 
 @app.route('/contacts', methods=['GET'])
 def index():
@@ -15,8 +18,7 @@ def index():
 def addContact():
     try:
         contact = Contact(request.form['name'], request.form['telephone'])
-        db.session.add(contact)
-        db.session.commit()
+        contacts_book.add_contact(contact)
         return redirect(url_for('index', message=Messages.ADD_SUCCESS.value))
     except:
         return redirect(url_for('index', message=Messages.ADD_ERROR.value))
