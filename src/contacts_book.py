@@ -11,8 +11,9 @@ class ContactsBook():
         db.session.add(contact)
         db.session.commit()
 
-    def get_contacts(self):
-        return self.contacts
+    def delete_contact(self, contact):
+        db.session.delete(contact)
+        db.session.commit()
 
     def remove_contact(self, id_of_contact_to_remove):
         for contact in self.contacts:

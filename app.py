@@ -27,8 +27,7 @@ def addContact():
 def deleteContact(id_to_delete):
     try:
         contact_to_delete = Contact.query.filter_by(id=id_to_delete).first()
-        db.session.delete(contact_to_delete)
-        db.session.commit()
+        contacts_book.delete_contact(contact_to_delete)
         return redirect(url_for('index', message=Messages.DELETE_SUCCESS.value))
     except:
         return redirect(url_for('index', message=Messages.DELETE_ERROR.value))

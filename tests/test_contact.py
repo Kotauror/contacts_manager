@@ -23,17 +23,6 @@ class TestContact():
         contact = Contact("Justyna", "123")
         assert contact.telephone == "123"
 
-    def test_remove_contact_from_db(self):
-        self.setup_test()
-        contact = Contact("Igor", '123456')
-        db.session.add(contact)
-        db.session.commit()
-        contact_to_delete = Contact.query.filter_by(name="Igor").first()
-        db.session.delete(contact_to_delete)
-        db.session.commit()
-
-        assert not Contact.query.filter_by(name="Igor").first()
-
     def test_edit_contact_in_db(self):
         self.setup_test()
         contact = Contact('Kozia', '1234567')
