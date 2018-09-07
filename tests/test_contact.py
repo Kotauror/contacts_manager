@@ -15,6 +15,14 @@ class TestContact():
         db.drop_all()
         db.create_all()
 
+    def test_contact_has_name(self):
+        contact = Contact("Justyna", "123")
+        assert contact.name == "Justyna"
+
+    def test_contact_has_telephone(self):
+        contact = Contact("Justyna", "123")
+        assert contact.telephone == "123"
+
     def test_add_contact_to_db(self):
         self.setup_test()
         contact = Contact("Justynka", '12345')
