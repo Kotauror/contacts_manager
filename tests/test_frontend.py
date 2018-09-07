@@ -5,10 +5,14 @@ from flask import request
 
 class TestFrontEnd(unittest.TestCase):
 
-    def test_web_app_running(self):
+    def get_driver(self):
         driver = webdriver.Chrome("/usr/local/bin/chromedriver")
         driver.set_page_load_timeout(10)
         driver.get("http://127.0.0.1:5000/contacts")
+        return driver
+
+    def test_web_app_running(self):
+        driver = self.get_driver()
 
         try:
             driver.find_element_by_id("welcome-message")
@@ -16,9 +20,7 @@ class TestFrontEnd(unittest.TestCase):
             self.fail("The website is not running")
 
     def test_add_contact_to_contacts(self):
-        driver = webdriver.Chrome("/usr/local/bin/chromedriver")
-        driver.set_page_load_timeout(10)
-        driver.get("http://127.0.0.1:5000/contacts")
+        driver = self.get_driver()
         driver.find_element_by_id("form-name").send_keys("Fake contact")
         driver.find_element_by_id("form-telephone").send_keys("111")
         driver.find_element_by_id("submit").click()
@@ -29,9 +31,7 @@ class TestFrontEnd(unittest.TestCase):
         driver.find_element_by_id("delete-Fake contact").click()
 
     def test_delete_contact(self):
-        driver = webdriver.Chrome("/usr/local/bin/chromedriver")
-        driver.set_page_load_timeout(10)
-        driver.get("http://127.0.0.1:5000/contacts")
+        driver = self.get_driver()
         driver.find_element_by_id("form-name").send_keys("Another fake contact")
         driver.find_element_by_id("form-telephone").send_keys("000")
         driver.find_element_by_id("submit").click()
@@ -41,9 +41,7 @@ class TestFrontEnd(unittest.TestCase):
         assert ("Contact deleted successfully" in driver.page_source)
 
     def test_edit_contact(self):
-        driver = webdriver.Chrome("/usr/local/bin/chromedriver")
-        driver.set_page_load_timeout(10)
-        driver.get("http://127.0.0.1:5000/contacts")
+        driver = self.get_driver()
         driver.find_element_by_id("form-name").send_keys("Another fake")
         driver.find_element_by_id("form-telephone").send_keys("222")
         driver.find_element_by_id("submit").click()
