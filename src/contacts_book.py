@@ -15,8 +15,7 @@ class ContactsBook():
         db.session.delete(contact)
         db.session.commit()
 
-    def update_contact(self, id_of_contact_to_change, name, telephone):
-        for contact in self.contacts:
-            if str(contact.id) == id_of_contact_to_change:
-                contact.name = name
-                contact.telephone = telephone
+    def edit_contact(self, contact, name, telephone):
+        contact.name = name
+        contact.telephone = telephone
+        db.session.commit()

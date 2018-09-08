@@ -41,9 +41,8 @@ def findUserToEdit():
 def editUser(id_to_edit):
     try:
         contact_to_update = Contact.query.filter_by(id=id_to_edit).first()
-        contact_to_update.name = request.form['name']
-        contact_to_update.telephone = request.form['telephone']
-        db.session.commit()
+        contacts_book.edit_contact(contact_to_update, request.form['name'],
+                                   request.form['telephone'])
         return redirect(url_for('index', message=Messages.EDIT_SUCCESS.value))
     except:
         return redirect(url_for('index', message=Messages.EDIT_ERROR.value))

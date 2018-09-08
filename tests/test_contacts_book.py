@@ -35,3 +35,14 @@ class TestContactsBook():
         contacts_book.delete_contact(contact)
 
         assert not Contact.query.filter_by(name="Igor").first()
+
+    def test_edit_contact_in_db(self):
+        self.setup_test()
+        contact = Contact('Kozia', '1234567')
+        contacts_book = self.get_contacts_book()
+        contacts_book.add_contact(contact)
+        contact_to_update = Contact.query.filter_by(name="Kozia").first()
+        contacts_book.edit_contact(contact_to_update, "Kozia 2", "555")
+
+        assert Contact.query.filter_by(name="Kozia 2").first()
+        assert not Contact.query.filter_by(name="Kozia").first()
