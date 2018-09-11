@@ -2,10 +2,8 @@ import pytest
 import sys
 from werkzeug.datastructures import ImmutableMultiDict
 sys.path.insert(0, '../src/')
-from contact import *
 from flask_sqlalchemy import SQLAlchemy
-from contact import *
-from contacts_book import *
+from contacts_book import ContactsBook
 import config, create_app
 from settings import db
 
@@ -19,30 +17,26 @@ class TestContactsBook():
         db.drop_all()
         db.create_all()
 
-    def test_add_contact_to_db(self):
+    def test_add_contact(self):
         self.setup_test()
-        contact = Contact("Justynka", '12345')
         contacts_book = self.get_contacts_book()
-        contacts_book.add_contact(contact)
+        contacts_book.add_contact("Justynka", '12345')
 
-        assert Contact.query.filter_by(name="Justynka").first()
+        assert contacts_book.get_contacts()[0].name == "Justynka"
 
-    def test_remove_contact_from_db(self):
+    def test_remove_contact(self):
         self.setup_test()
-        contact = Contact("Igor", '123456')
         contacts_book = self.get_contacts_book()
-        contacts_book.add_contact(contact)
-        contacts_book.delete_contact(contact)
+        contacts_book.add_contact("Igor", "123456") 
+        contacts_book.delete_contact_by_id(1)
 
-        assert not Contact.query.filter_by(name="Igor").first()
+        assert len(contacts_book.get_contacts()) == 0
 
-    def test_edit_contact_in_db(self):
+    def test_edit_contact(self):
         self.setup_test()
-        contact = Contact('Kozia', '1234567')
         contacts_book = self.get_contacts_book()
-        contacts_book.add_contact(contact)
-        contact_to_update = Contact.query.filter_by(name="Kozia").first()
-        contacts_book.edit_contact(contact_to_update, "Kozia 2", "555")
+        contacts_book.add_contact("Kozia", "1234567")
+        contacts_book.edit_contact_by_id(1, "Kozica", "1221")
 
-        assert Contact.query.filter_by(name="Kozia 2").first()
-        assert not Contact.query.filter_by(name="Kozia").first()
+        assert contacts_book.get_contacts()[0].name == "Kozica"
+        assert contacts_book.get_contacts()[0].telephone == "1221"

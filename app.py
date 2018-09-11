@@ -3,22 +3,20 @@ from flask_sqlalchemy import SQLAlchemy
 import sys
 from src.messages import *
 from settings import app, db
-from src.contact import *
-from src.contacts_book import *
+from src.contacts_book import ContactsBook
 
 contacts_book = ContactsBook()
 
 @app.route('/contacts', methods=['GET'])
 def index():
-    contacts = Contact.query.all()
+    contacts = contacts_book.get_contacts()
     message = request.args.get('message')
     return render_template('home.html', contacts=contacts, message=message)
 
 @app.route('/contacts', methods=['POST'])
 def addContact():
     try:
-        contact = Contact(request.form['name'], request.form['telephone'])
-        contacts_book.add_contact(contact)
+        contacts_book.add_contact(request.form['name'], request.form['telephone'])
         return redirect(url_for('index', message=Messages.ADD_SUCCESS.value))
     except:
         return redirect(url_for('index', message=Messages.ADD_ERROR.value))
@@ -26,8 +24,7 @@ def addContact():
 @app.route('/contacts/delete/id=<string:id_to_delete>', methods=['POST'])
 def deleteContact(id_to_delete):
     try:
-        contact_to_delete = Contact.query.filter_by(id=id_to_delete).first()
-        contacts_book.delete_contact(contact_to_delete)
+        contacts_book.delete_contact_by_id(id_to_delete)
         return redirect(url_for('index', message=Messages.DELETE_SUCCESS.value))
     except:
         return redirect(url_for('index', message=Messages.DELETE_ERROR.value))
@@ -40,9 +37,7 @@ def findUserToEdit():
 @app.route('/contacts/edit/id=<string:id_to_edit>', methods=['POST'])
 def editUser(id_to_edit):
     try:
-        contact_to_update = Contact.query.filter_by(id=id_to_edit).first()
-        contacts_book.edit_contact(contact_to_update, request.form['name'],
-                                   request.form['telephone'])
+        contacts_book.edit_contact_by_id(id_to_edit, request.form['name'], request.form['telephone'])
         return redirect(url_for('index', message=Messages.EDIT_SUCCESS.value))
     except:
         return redirect(url_for('index', message=Messages.EDIT_ERROR.value))
