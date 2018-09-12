@@ -7,6 +7,10 @@ from src.contacts_book import ContactsBook
 
 contacts_book = ContactsBook()
 
+@app.route('/', methods=['GET'])
+def testRoute():
+    return render_template("index.html")
+
 @app.route('/contacts', methods=['GET'])
 def index():
     contacts = contacts_book.get_contacts()

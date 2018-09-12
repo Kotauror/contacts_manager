@@ -1,4 +1,4 @@
-/__pycache__
+/__pycache__/
 .DS_Store
 /tests/__pycache__
 /tests/.pytest_cache/
@@ -9,3 +9,4 @@
 /static/dist
 /static/node_modules
 /static/package-lock.json
+/server/__pycache__/
