@@ -6,3 +6,6 @@
 /.pytest_cache/
 *.swp
 /env/
+/static/dist
+/static/node_modules
+/static/package-lock.json
