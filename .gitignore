@@ -10,3 +10,4 @@
 /static/node_modules
 /static/package-lock.json
 /server/__pycache__/
+/static/js/components/__tests__/__snapshots__/
