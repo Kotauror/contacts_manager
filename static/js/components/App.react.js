@@ -11,7 +11,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://127.0.0.1:5000/contacts')
+    fetch('/contacts')
     .then(response => response.json())
     .then(data => {
       this.setState({ contacts: data})
