@@ -1,4 +1,5 @@
 import sys
+import json
 sys.path.append('../')
 from settings import db
 from src.contact import Contact
@@ -7,6 +8,17 @@ class ContactsBook():
 
     def __init__(self):
         self.contacts = []
+
+    def get_contacts_as_jsons(self):
+        contacts = Contact.query.all()
+        arrayOfJsons = []
+        for contact in contacts:
+            contactAsObject = {}
+            contactAsObject['name'] = contact.name
+            contactAsObject['telephone'] = contact.telephone
+            json_data = json.dumps(contactAsObject)
+            arrayOfJsons.append(json_data)
+        return arrayOfJsons
 
     def get_contacts(self):
         return Contact.query.all()

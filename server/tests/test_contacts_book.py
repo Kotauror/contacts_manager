@@ -17,6 +17,16 @@ class TestContactsBook():
         db.drop_all()
         db.create_all()
 
+    def test_return_contacts_as_array_of_jsons(self):
+        self.setup_test()
+        contacts_book = self.get_contacts_book()
+        contacts_book.add_contact("Justynka", '00')
+        contacts_book.add_contact("Igus", '11')
+        actualResult = contacts_book.get_contacts_as_jsons()
+        expectedResult = ["{\"name\": \"Justynka\", \"telephone\": \"00\"}", "{\"name\": \"Igus\", \"telephone\": \"11\"}"]
+
+        assert actualResult == expectedResult
+
     def test_add_contact(self):
         self.setup_test()
         contacts_book = self.get_contacts_book()
@@ -27,7 +37,7 @@ class TestContactsBook():
     def test_remove_contact(self):
         self.setup_test()
         contacts_book = self.get_contacts_book()
-        contacts_book.add_contact("Igor", "123456") 
+        contacts_book.add_contact("Igor", "123456")
         contacts_book.delete_contact_by_id(1)
 
         assert len(contacts_book.get_contacts()) == 0
