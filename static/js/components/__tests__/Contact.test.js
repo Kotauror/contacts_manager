@@ -12,8 +12,4 @@ describe('Contact', () => {
   it('renders correctly', () => {
     expect(contact).toMatchSnapshot();
   });
-
-  it('initializes name and telephone in state', () => {
-    expect(contact.state()).toEqual({name: "", telephone: ""});
-  });
 });

@@ -12,26 +12,31 @@ class App extends React.Component {
 
   componentDidMount() {
     fetch('/contacts')
-    .then(response => response.json())
-    .then(data => {
-      this.setState({ contacts: data})
-    })
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ contacts: data})
+      })
   }
 
   render() {
     return (
       <div>
         <h1> Welcome to Contacts Manager</h1>
-        <ul>
-          {this.state.contacts.map(contact =>
-            <li key={contact.id}>
-              {contact.name}, {contact.telephone}
-            </li>
-          )}
-        </ul>
+        <div className="contacts-list">
+          {
+            this.state.contacts.map(contact => {
+              return (
+                <Contact
+                  key={contact.id}
+                  name={contact.name}
+                  telephone={contact.telephone}
+                />
+              )
+            })
+          }
+        </div>
       </div>
-    );
+    )
   }
-
 }
 export default App;

@@ -1,16 +1,14 @@
 import React from "react";
 
 class Contact extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      name: "",
-      telephone: ""
-    };
-  }
+  
   render() {
-    
+    return (
+      <div>
+        { this.props.name }
+        { this.props.telephone }
+      </div>
+    )
   }
 }
 
