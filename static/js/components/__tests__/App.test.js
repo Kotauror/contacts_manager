@@ -6,7 +6,6 @@ Enzyme.configure({adapter: new Adapter()});
 
 import App from '../App.react';
 
-
 describe('App', () => {
   const app = shallow(<App />);
 
@@ -14,7 +13,7 @@ describe('App', () => {
     expect(app).toMatchSnapshot();
   });
 
-  it('initializes the states with an empty list of gifts', () => {
+  it('initializes the states with an empty list of contacts', () => {
     expect(app.state().contacts).toEqual([]);
   });
 });

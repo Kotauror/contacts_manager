@@ -9,7 +9,7 @@ class App extends React.Component {
     }
   }
   render () {
-    return <p> Hello React my love!</p>;
+    return <p> Welcome to the contacts manager!</p>
   }
 }
 
