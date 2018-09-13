@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import sys
+import json
 from src.messages import *
 from settings import app, db
 from src.contacts_book import ContactsBook
@@ -13,9 +14,11 @@ def testRoute():
 
 @app.route('/contacts', methods=['GET'])
 def index():
-    contacts = contacts_book.get_contacts()
-    message = request.args.get('message')
-    return render_template('home.html', contacts=contacts, message=message)
+    # contacts = contacts_book.get_contacts()
+    # message = request.args.get('message')
+    # return render_template('home.html', contacts=contacts, message=message)
+    contacts = contacts_book.get_contacts_as_jsons()
+    return json.dumps(contacts)
 
 @app.route('/contacts', methods=['POST'])
 def addContact():
