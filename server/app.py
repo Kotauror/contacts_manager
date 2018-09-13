@@ -14,11 +14,7 @@ def testRoute():
 
 @app.route('/contacts', methods=['GET'])
 def index():
-    # contacts = contacts_book.get_contacts()
-    # message = request.args.get('message')
-    # return render_template('home.html', contacts=contacts, message=message)
-    contacts = contacts_book.get_contacts_as_jsons()
-    return json.dumps(contacts)
+    return contacts_book.get_contacts_as_jsons()
 
 @app.route('/contacts', methods=['POST'])
 def addContact():
