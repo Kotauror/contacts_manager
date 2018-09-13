@@ -23,7 +23,7 @@ class TestContactsBook():
         contacts_book.add_contact("Justynka", '00')
         contacts_book.add_contact("Igus", '11')
         actualResult = contacts_book.get_contacts_as_jsons()
-        expectedResult = "[{\"name\": \"Justynka\", \"telephone\": \"00\"}, {\"name\": \"Igus\", \"telephone\": \"11\"}]"
+        expectedResult = "[{\"name\": \"Justynka\", \"telephone\": \"00\", \"id\": 1}, {\"name\": \"Igus\", \"telephone\": \"11\", \"id\": 2}]"
 
         assert actualResult == expectedResult
 

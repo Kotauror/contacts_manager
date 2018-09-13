@@ -16,6 +16,7 @@ class ContactsBook():
             contactAsObject = {}
             contactAsObject['name'] = contact.name
             contactAsObject['telephone'] = contact.telephone
+            contactAsObject['id'] = contact.id
             arrayOfObjects.append(contactAsObject)
         return json.dumps(arrayOfObjects)
 
