@@ -11,14 +11,13 @@ class ContactsBook():
 
     def get_contacts_as_jsons(self):
         contacts = Contact.query.all()
-        arrayOfJsons = []
+        arrayOfObjects = []
         for contact in contacts:
             contactAsObject = {}
             contactAsObject['name'] = contact.name
             contactAsObject['telephone'] = contact.telephone
-            json_data = json.dumps(contactAsObject)
-            arrayOfJsons.append(json_data)
-        return arrayOfJsons
+            arrayOfObjects.append(contactAsObject)
+        return json.dumps(arrayOfObjects)
 
     def get_contacts(self):
         return Contact.query.all()

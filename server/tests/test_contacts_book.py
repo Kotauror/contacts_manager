@@ -17,13 +17,13 @@ class TestContactsBook():
         db.drop_all()
         db.create_all()
 
-    def test_return_contacts_as_array_of_jsons(self):
+    def test_return_contacts_as_json(self):
         self.setup_test()
         contacts_book = self.get_contacts_book()
         contacts_book.add_contact("Justynka", '00')
         contacts_book.add_contact("Igus", '11')
         actualResult = contacts_book.get_contacts_as_jsons()
-        expectedResult = ["{\"name\": \"Justynka\", \"telephone\": \"00\"}", "{\"name\": \"Igus\", \"telephone\": \"11\"}"]
+        expectedResult = "[{\"name\": \"Justynka\", \"telephone\": \"00\"}, {\"name\": \"Igus\", \"telephone\": \"11\"}]"
 
         assert actualResult == expectedResult
 
