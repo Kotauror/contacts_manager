@@ -23,8 +23,7 @@ class App extends React.Component {
       <div>
         <h1> Welcome to Contacts Manager</h1>
         <div className="contacts-list">
-          {
-            this.state.contacts.map(contact => {
+          { this.state.contacts.map(contact => {
               return (
                 <Contact
                   key={contact.id}
@@ -32,11 +31,11 @@ class App extends React.Component {
                   telephone={contact.telephone}
                 />
               )
-            })
-          }
+            }) }
         </div>
       </div>
     )
   }
 }
+
 export default App;
