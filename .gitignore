@@ -11,3 +11,5 @@
 /static/package-lock.json
 /server/__pycache__/
 /static/js/components/__tests__/__snapshots__/
+/server/tests/__pycache__
+/server/src/__pycache__
