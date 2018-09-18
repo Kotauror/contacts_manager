@@ -27,11 +27,21 @@ class TestContactsBook():
 
         assert actualResult == expectedResult
 
+    def test_return_single_contact_as_json(self):
+        self.setup_test()
+        contacts_book = self.get_contacts_book()
+        contact = contacts_book.add_contact("Justynka", '00')
+        actualResult = contacts_book.contact_to_json(contact)
+        expectedResult = "{\"name\": \"Justynka\", \"telephone\": \"00\", \"id\": 1}"
+
+        assert actualResult == expectedResult
+
     def test_add_contact(self):
         self.setup_test()
         contacts_book = self.get_contacts_book()
-        contacts_book.add_contact("Justynka", '12345')
+        contact = contacts_book.add_contact("Justynka", '12345')
 
+        assert contact.name == "Justynka"
         assert contacts_book.get_contacts()[0].name == "Justynka"
 
     def test_remove_contact(self):

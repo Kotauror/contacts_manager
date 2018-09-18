@@ -21,9 +21,6 @@ class ContactsBook():
             arrayOfObjects.append(contactAsObject)
         return json.dumps(arrayOfObjects)
 
-    def get_contacts(self):
-        return Contact.query.all()
-
     def contact_to_json(self, contact):
         contactAsObject = {
             'name': contact.name,
@@ -31,6 +28,9 @@ class ContactsBook():
             'id': contact.id
         }
         return json.dumps(contactAsObject)
+
+    def get_contacts(self):
+        return Contact.query.all()
 
     def add_contact(self, name, telephone):
         contact = Contact(name, telephone)
