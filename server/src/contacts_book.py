@@ -13,10 +13,11 @@ class ContactsBook():
         contacts = Contact.query.all()
         arrayOfObjects = []
         for contact in contacts:
-            contactAsObject = {}
-            contactAsObject['name'] = contact.name
-            contactAsObject['telephone'] = contact.telephone
-            contactAsObject['id'] = contact.id
+            contactAsObject = {
+                'name': contact.name,
+                'telephone': contact.telephone,
+                'id': contact.id
+            }
             arrayOfObjects.append(contactAsObject)
         return json.dumps(arrayOfObjects)
 
@@ -24,10 +25,11 @@ class ContactsBook():
         return Contact.query.all()
 
     def contact_to_json(self, contact):
-        contactAsObject = {}
-        contactAsObject['name'] = contact.name
-        contactAsObject['telephone'] = contact.telephone
-        contactAsObject['id'] = contact.id
+        contactAsObject = {
+            'name': contact.name,
+            'telephone': contact.telephone,
+            'id': contact.id
+        }
         return json.dumps(contactAsObject)
 
     def add_contact(self, name, telephone):
