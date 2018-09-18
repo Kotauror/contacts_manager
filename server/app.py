@@ -16,13 +16,11 @@ def testRoute():
 def index():
     return contacts_book.get_contacts_as_jsons()
 
-@app.route('/contacts', methods=['POST'])
-def addContact():
-    try:
-        contacts_book.add_contact(request.form['name'], request.form['telephone'])
-        return redirect(url_for('index', message=Messages.ADD_SUCCESS.value))
-    except:
-        return redirect(url_for('index', message=Messages.ADD_ERROR.value))
+@app.route('/contacts/add', methods=['POST'])
+def indexaddd():
+    content = request.get_json() ## gets data from post request from form
+    contact = contacts_book.add_contact(content['name'], content['telephone'])
+    return contacts_book.contact_to_json(contact)
 
 @app.route('/contacts/delete/id=<string:id_to_delete>', methods=['POST'])
 def deleteContact(id_to_delete):

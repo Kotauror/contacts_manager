@@ -5,7 +5,6 @@ const config = {
         path: __dirname + '/dist',
         filename: 'bundle.js',
     },
-    externals: ['axios'],
     resolve: {
         extensions: ['.js', '.jsx', '.css']
     },

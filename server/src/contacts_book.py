@@ -23,10 +23,18 @@ class ContactsBook():
     def get_contacts(self):
         return Contact.query.all()
 
+    def contact_to_json(self, contact):
+        contactAsObject = {}
+        contactAsObject['name'] = contact.name
+        contactAsObject['telephone'] = contact.telephone
+        contactAsObject['id'] = contact.id
+        return json.dumps(contactAsObject)
+
     def add_contact(self, name, telephone):
         contact = Contact(name, telephone)
         db.session.add(contact)
         db.session.commit()
+        return Contact.query.filter_by(name=name).first()
 
     def delete_contact_by_id(self, id_to_delete):
         contact = Contact.query.filter_by(id=id_to_delete).first()

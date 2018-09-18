@@ -16,5 +16,5 @@ describe('App', () => {
 
   it('initializes the states with an empty list of contacts', () => {
     expect(app.state().contacts).toEqual([]);
-  });
+  });  
 });

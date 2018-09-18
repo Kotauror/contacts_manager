@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Contact from './Contact.react';
+import ContactForm from './ContactForm.react';
 
 class App extends React.Component {
   constructor() {
@@ -22,12 +23,16 @@ class App extends React.Component {
     return (
       <div>
         <h1> Welcome to Contacts Manager</h1>
+        <ContactForm
+          onAddContact={(c) => this.addContact(c)}
+        />
         <div className="contacts-list">
           { this.state.contacts.map(contact => {
               return (
                 <Contact
                   key={contact.id}
                   name={contact.name}
+                  id={contact.id}
                   telephone={contact.telephone}
                 />
               )
@@ -36,6 +41,13 @@ class App extends React.Component {
       </div>
     )
   }
+
+  addContact(contact) {
+    const { contacts } = this.state
+    contacts.push(contact)
+    this.setState({ contacts })
+  }
+
 }
 
 export default App;
