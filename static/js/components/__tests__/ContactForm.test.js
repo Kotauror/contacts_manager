@@ -18,4 +18,20 @@ describe('ContactForm', () => {
     expect(contactForm.state().name).toEqual("");
     expect(contactForm.state().telephone).toEqual("");
   });
+
+  describe('when typing into name and telephone input', () => {
+
+    beforeEach(() => {
+      contactForm.find('.input-name').simulate('change', { target: { value: "Justyna"}});
+      contactForm.find('.input-phone').simulate('change', { target: { value: "111"}});
+    });
+
+    it('updates the name in state', () => {
+      expect(contactForm.state().name).toEqual("Justyna");
+    });
+
+    it('updates the phone in state', () => {
+      expect(contactForm.state().telephone).toEqual("111");
+    });
+  })
 });
