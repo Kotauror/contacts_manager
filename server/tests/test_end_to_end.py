@@ -5,7 +5,7 @@ from selenium import webdriver
 from flask import request
 from settings import db
 
-class TestFrontEnd(unittest.TestCase):
+class TestEndToEnd(unittest.TestCase):
 
     def setup_test(self):
         db.session.commit()
