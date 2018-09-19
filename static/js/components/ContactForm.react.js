@@ -27,7 +27,7 @@ class ContactForm extends React.Component {
               onChange={(e) => this.handleChangeTelephone(e.target.value)}
             />
           </FormGroup>
-          <Button type="submit">Submit</Button>
+          <Button className='btn-add' type="submit">Submit</Button>
         </form>
       </div>
     )
@@ -42,6 +42,7 @@ class ContactForm extends React.Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault()
     fetch('/contacts/add', {
       method: 'post',
       headers: {
@@ -52,7 +53,8 @@ class ContactForm extends React.Component {
         "name": this.state.name,
         "telephone": this.state.telephone,
       })
-    }).then(response => response.json())
+    })
+    .then(response => response.json())
       .then(contact => {
         this.props.onAddContact(contact)
       })

@@ -9,7 +9,7 @@ from src.contacts_book import ContactsBook
 contacts_book = ContactsBook()
 
 @app.route('/', methods=['GET'])
-def testRoute():
+def homeRoute():
     return render_template("index.html")
 
 @app.route('/contacts', methods=['GET'])
@@ -17,9 +17,9 @@ def index():
     return contacts_book.get_contacts_as_jsons()
 
 @app.route('/contacts/add', methods=['POST'])
-def indexaddd():
-    content = request.get_json() ## gets data from post request from form
-    contact = contacts_book.add_contact(content['name'], content['telephone'])
+def addContact():
+    content_of_request = request.get_json()
+    contact = contacts_book.add_contact(content_of_request['name'], content_of_request['telephone'])
     return contacts_book.contact_to_json(contact)
 
 @app.route('/contacts/delete/id=<string:id_to_delete>', methods=['POST'])
