@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Contact from './Contact.react';
 import ContactForm from './ContactForm.react';
 
+import Api from './Api';
+
 
 class App extends React.Component {
   constructor() {
@@ -13,11 +15,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/contacts')
-      .then(response => response.json())
-      .then(data => {
-        this.setState({ contacts: data})
-      })
+    Api.getContacts().then(data => { this.setState({ contacts: data}) })
   }
 
   render() {
