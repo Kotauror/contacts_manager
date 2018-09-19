@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
+import Api from './Api';
 
 class ContactForm extends React.Component {
   constructor() {
@@ -43,22 +44,10 @@ class ContactForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    fetch('/contacts/add', {
-      method: 'post',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        "name": this.state.name,
-        "telephone": this.state.telephone,
-      })
-    })
-    .then(response => response.json())
-      .then(contact => {
+    Api.addContact(this.state.name, this.state.telephone)
+    .then(contact => {
         this.props.onAddContact(contact)
       })
-    event.preventDefault()
   }
 }
 

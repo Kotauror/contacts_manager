@@ -16,7 +16,8 @@ class Api {
         "name": name,
         "telephone": telephone,
       })
-    }).then((response) => { return response.json() })
+    })
+    .then((response) => { return response.json() })
   }
 
 }
