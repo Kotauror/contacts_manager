@@ -53,8 +53,8 @@ class ContactForm extends React.Component {
         "telephone": this.state.telephone,
       })
     }).then(response => response.json())
-      .then(data => {
-        this.props.onAddContact(data)
+      .then(contact => {
+        this.props.onAddContact(contact)
       })
     event.preventDefault()
   }
