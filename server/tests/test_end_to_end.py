@@ -27,17 +27,20 @@ class TestEndToEnd(unittest.TestCase):
         time.sleep(1)
         assert ("NamePhone" in driver.page_source)
 
-    # def test_delete_contact(self):
-    #     self.setup_test()
-    #     driver = self.get_driver()
-    #     driver.find_element_by_id("form-name").send_keys("Another fake contact")
-    #     driver.find_element_by_id("form-telephone").send_keys("000")
-    #     driver.find_element_by_id("submit").click()
-    #     driver.find_element_by_id("delete-Another fake contact").click()
-    #
-    #     assert not ("Another fake contact" in driver.page_source)
-    #     assert ("Contact deleted successfully" in driver.page_source)
-    #
+    def test_delete_contact(self):
+        self.setup_test()
+        driver = self.get_driver()
+        driver = self.get_driver()
+        driver.find_element_by_class_name("input-name").send_keys("Name")
+        driver.find_element_by_class_name("input-Phone").send_keys("Phone")
+        driver.find_element_by_class_name("btn-add").click()
+        time.sleep(1)
+        driver.find_element_by_id("delete-Name").click()
+        time.sleep(1)
+
+        assert not ("Another fake contact" in driver.page_source)
+        assert ("Contact deleted successfully" in driver.page_source)
+
     # def test_edit_contact(self):
     #     self.setup_test()
     #     driver = self.get_driver()
