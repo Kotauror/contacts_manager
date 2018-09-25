@@ -3,12 +3,11 @@ import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { mount } from 'enzyme';
 import axios from 'axios';
-
-Enzyme.configure({adapter: new Adapter()});
-
 import App from '../App.react';
 import ContactForm from '../ContactForm.react';
 import Api from '../Api';
+
+Enzyme.configure({adapter: new Adapter()});
 
 describe('App', () => {
   const app = shallow(<App />);
