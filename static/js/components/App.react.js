@@ -49,11 +49,11 @@ class App extends React.Component {
 
   removeContact(contactToRemove) {
     const { contacts } = this.state
-    var result = contacts.filter(contact => this.areContactsEqual(contact, contactToRemove))
+    var result = contacts.filter(contact => this._areContactsEqual(contact, contactToRemove))
     this.setState({ contacts: result })
   }
 
-  areContactsEqual(contact1, contact2) {
+  _areContactsEqual(contact1, contact2) {
     (contact1.name.localeCompare(contact2.name)) &&
     (contact1.telephone.localeCompare(contact2.telephone))
   }
