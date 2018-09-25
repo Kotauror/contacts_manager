@@ -48,7 +48,7 @@ class TestContactsBook():
         self.setup_test()
         contacts_book = self.get_contacts_book()
         contacts_book.add_contact("Igor", "123456")
-        contacts_book.delete_contact_by_id(1)
+        contacts_book.delete_contact_by_name("Igor")
 
         assert len(contacts_book.get_contacts()) == 0
 

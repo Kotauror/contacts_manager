@@ -22,13 +22,11 @@ def addContact():
     contact = contacts_book.add_contact(content_of_request['name'], content_of_request['telephone'])
     return contacts_book.contact_to_json(contact)
 
-@app.route('/contacts/delete/id=<string:id_to_delete>', methods=['POST'])
-def deleteContact(id_to_delete):
-    try:
-        contacts_book.delete_contact_by_id(id_to_delete)
-        return redirect(url_for('index', message=Messages.DELETE_SUCCESS.value))
-    except:
-        return redirect(url_for('index', message=Messages.DELETE_ERROR.value))
+@app.route('/contacts/delete', methods=['POST'])
+def deleteContact():
+    content_of_request = request.get_json()
+    contact = contacts_book.delete_contact_by_name(content_of_request['name'])
+    return contacts_book.contact_to_json(contact)
 
 @app.route('/contacts/edit', methods=['POST'])
 def findUserToEdit():

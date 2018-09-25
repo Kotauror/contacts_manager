@@ -14,6 +14,14 @@ class Api {
     })
     .then((response) => { return response.data })
   }
+
+  static deleteContact(name, telephone) {
+    return axios.post('/contacts/delete', {
+      "name": name,
+      "telephone": telephone,
+    })
+    .then((response) => { return response.data })
+  }
 }
 
 export default Api

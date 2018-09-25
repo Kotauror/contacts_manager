@@ -33,6 +33,7 @@ class App extends React.Component {
                   name={contact.name}
                   id={contact.id}
                   telephone={contact.telephone}
+                  onDeleteContact={(c) => this.deleteContact(c)}
                 />
               )
             }) }
@@ -47,7 +48,8 @@ class App extends React.Component {
     this.setState({ contacts })
   }
 
-  removeContact(contactToRemove) {
+  deleteContact(contactToRemove) {
+    console.log("*********")
     const { contacts } = this.state
     var result = contacts.filter(contact => this._areContactsEqual(contact, contactToRemove))
     this.setState({ contacts: result })
