@@ -40,7 +40,7 @@ describe('App', () => {
 
     it('add removes contact from state', () => {
       app.instance().addContact(contact)
-      app.instance().removeContact(contact)
+      app.instance().deleteContact(contact)
 
       expect(app.instance().state.contacts.length).toEqual(0)
     })

@@ -49,15 +49,9 @@ class App extends React.Component {
   }
 
   deleteContact(contactToRemove) {
-    console.log("*********")
     const { contacts } = this.state
-    var result = contacts.filter(contact => this._areContactsEqual(contact, contactToRemove))
+    var result = contacts.filter(contact => !(contact.name == contactToRemove.name))
     this.setState({ contacts: result })
-  }
-
-  _areContactsEqual(contact1, contact2) {
-    (contact1.name.localeCompare(contact2.name)) &&
-    (contact1.telephone.localeCompare(contact2.telephone))
   }
 }
 
