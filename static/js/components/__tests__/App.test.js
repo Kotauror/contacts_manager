@@ -40,8 +40,9 @@ describe('App', () => {
     it('add removes contact from state', () => {
       const contact = {name: "Kota", telephone: "000"}
       app.instance().addContact(contact)
+      app.instance().removeContact(contact)
 
-      expect(app.instance().state.contacts[0].name).toEqual("Kota")
+      expect(app.instance().state.contacts.length).toEqual(0)
     })
   })
 
