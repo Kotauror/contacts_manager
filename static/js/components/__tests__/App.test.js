@@ -21,6 +21,30 @@ describe('App', () => {
     expect(app.state().contacts).toEqual([]);
   });
 
+  describe('operations on contacts', () => {
+    beforeEach(() => {
+      app.setState({contacts: []});
+    });
+
+    afterEach(() => {
+      app.setState({contacts: []});
+    })
+
+    it('add contact to state', () => {
+      const contact = {name: "Kota", telephone: "000"}
+      app.instance().addContact(contact)
+
+      expect(app.instance().state.contacts[0].name).toEqual("Kota")
+    })
+
+    it('add removes contact from state', () => {
+      const contact = {name: "Kota", telephone: "000"}
+      app.instance().addContact(contact)
+
+      expect(app.instance().state.contacts[0].name).toEqual("Kota")
+    })
+  })
+
   describe('when there are some contacts in the state', () => {
     beforeEach(() => {
       app.setState({contacts: [{name: "Kota", telephone: "000"}]});
@@ -35,7 +59,7 @@ describe('App', () => {
     })
   })
 
-  describe('when adding a contact', () => {
+  describe('when adding a contac via website', () => {
 
     const appWithChildren = mount(<App />)
 
