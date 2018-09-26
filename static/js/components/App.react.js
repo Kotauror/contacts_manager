@@ -59,7 +59,7 @@ class App extends React.Component {
     contacts.map(contact => {
       if (contact.name == editInformation.oldName) {
         contact.name = editInformation.newName,
-        contact.telephone = editInformation.newPhone
+        contact.telephone = editInformation.newTelephone
       }
     })
     this.setState({ contacts })
