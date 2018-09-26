@@ -25,10 +25,10 @@ class Api {
 
   static editContact(oldName, oldPhone, newName, newPhone) {
     return axios.post('/contacts/edit', {
-      "oldContactName": oldName,
-      "oldContactTelephone": oldPhone,
-      "newContactName": newName,
-      "newContactTelephone": newPhone
+      "oldName": oldName,
+      "oldPhone": oldPhone,
+      "newName": newName,
+      "newPhone": newPhone
     })
     .then((response) => { return response.data })
   }

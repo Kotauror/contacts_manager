@@ -51,7 +51,7 @@ class ContactsBook():
         db.session.commit()
         return self.inform_about_edit(name_to_edit, newName, newTelephone)
 
-    def _inform_about_edit(self, name_to_edit, newName, newTelephone):
+    def inform_about_edit(self, name_to_edit, newName, newTelephone):
         return {
             'oldName': name_to_edit,
             'newName': newName,
