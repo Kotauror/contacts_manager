@@ -57,7 +57,7 @@ class App extends React.Component {
   editContact(editInformation) {
     const { contacts } = this.state
     contacts.map(contact => {
-      if (contact.name == editInformation.nameOfEditedContact) {
+      if (contact.name == editInformation.oldName) {
         contact.name = editInformation.newName,
         contact.telephone = editInformation.newPhone
       }

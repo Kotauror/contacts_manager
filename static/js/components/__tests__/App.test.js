@@ -46,7 +46,7 @@ describe('App', () => {
 
     it('edits the contact in state', () => {
       var editInfo = {
-          'nameOfEditedContact': "Kota",
+          'oldName': "Kota",
           'newName': "Jusia",
           'newPhone': "000000"
       }

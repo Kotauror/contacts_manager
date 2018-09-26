@@ -49,12 +49,11 @@ class ContactsBook():
         contact.name = newName
         contact.telephone = newTelephone
         db.session.commit()
-        return self.create_info_about_edit(name_to_edit, newName, newTelephone)
+        return self.inform_about_edit(name_to_edit, newName, newTelephone)
 
-    def create_info_about_edit(self, name_to_edit, newName, newTelephone):
-        info = {
-            'nameOfEditedContact': name_to_edit,
+    def _inform_about_edit(self, name_to_edit, newName, newTelephone):
+        return {
+            'oldName': name_to_edit,
             'newName': newName,
             'newTelephone': newTelephone
         }
-        return info

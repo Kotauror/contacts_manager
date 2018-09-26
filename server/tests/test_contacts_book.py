@@ -58,7 +58,7 @@ class TestContactsBook():
         contacts_book.add_contact("Igor", "123456")
         actual = contacts_book.edit_contact_by_name("Igor", "Myszek", "9999")
         expected = {
-            'nameOfEditedContact': "Igor",
+            'oldName': "Igor",
             'newName': "Myszek",
             'newTelephone': "9999"
             }

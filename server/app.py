@@ -18,21 +18,21 @@ def index():
 
 @app.route('/contacts/add', methods=['POST'])
 def addContact():
-    content_of_request = request.get_json()
-    contact = contacts_book.add_contact(content_of_request['name'], content_of_request['telephone'])
+    req = request.get_json()
+    contact = contacts_book.add_contact(req['name'], req['telephone'])
     return contacts_book.contact_to_json(contact)
 
 @app.route('/contacts/delete', methods=['POST'])
 def deleteContact():
-    content_of_request = request.get_json()
-    contact = contacts_book.delete_contact_by_name(content_of_request['name'])
+    req = request.get_json()
+    contact = contacts_book.delete_contact_by_name(req['name'])
     return contacts_book.contact_to_json(contact)
 
 @app.route('/contacts/edit', methods=['POST'])
 def editttContact():
     req = request.get_json()
-    editInformation = contacts_book.edit_contact_by_name(req['oldContactName'], req['newContactName'], req['newContactTelephone'])
-    return json.dumps(editInformation)
+    infoAboutEdit = contacts_book.edit_contact_by_name(req['oldName'], req['newName'], req['newPhone'])
+    return json.dumps(infoAboutEdit)
 
 if __name__ == '__main__':
     app.run(debug=True)
