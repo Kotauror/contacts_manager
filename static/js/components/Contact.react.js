@@ -8,26 +8,26 @@ class Contact extends React.Component {
     super();
 
     this.state = {
-      disableEditing: true
+      disable: true
     }
   }
 
   render() {
     return (
       <div>
-         <input type="text" disabled={this.state.disableEditing} defaultValue={this.props.name}/>
-         <input type="text" disabled={this.state.disableEditing} defaultValue={this.props.telephone}/>
+         <input type="text" disabled={this.state.disable} defaultValue={this.props.name} />
+         <input type="text" disabled={this.state.disable} defaultValue={this.props.telephone}/>
         <DeleteContact
           onClick={(e) => this.handleDelete(e)}
         />
         <EditContact
-          onClick={(e) => this.handleEditClick(e)}
+          onClick={(e) => this.handleEditClick()}
         />
       </div>
     )
   }
 
-  handleEditClick(e) {
+  handleEditClick() {
     this.setState({disable: !this.state.disable})
   }
 
