@@ -48,7 +48,7 @@ describe('App', () => {
       var editInfo = {
           'nameOfEditedContact': "Kota",
           'newName': "Jusia",
-          'newTelephone': "000000"
+          'newPhone': "000000"
       }
       app.instance().addContact(contact)
       app.instance().editContact(editInfo)
