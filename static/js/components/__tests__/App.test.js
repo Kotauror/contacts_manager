@@ -45,13 +45,17 @@ describe('App', () => {
     })
 
     it('edits the contact in state', () => {
-      var editedContact = {name: "Psotka", telephone: "999"}
+      var editInfo = {
+          'nameOfEditedContact': "Kota",
+          'newName': "Jusia",
+          'newTelephone': "000000"
+      }
       app.instance().addContact(contact)
-      app.instance().editContact(contact, editedContact)
+      app.instance().editContact(editInfo)
 
       expect(app.instance().state.contacts.length).toEqual(1)
-      expect(app.instance().state.contacts[0].name).toEqual("Psotka")
-      expect(app.instance().state.contacts[0].telephone).toEqual("999")
+      expect(app.instance().state.contacts[0].name).toEqual("Jusia")
+      expect(app.instance().state.contacts[0].telephone).toEqual("000000")
     })
   })
 

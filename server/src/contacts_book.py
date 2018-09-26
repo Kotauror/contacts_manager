@@ -44,8 +44,17 @@ class ContactsBook():
         db.session.commit()
         return contact
 
-    def edit_contact_by_id(self, id_to_edit, name, telephone):
-        contact = Contact.query.filter_by(id=id_to_edit).first()
-        contact.name = name
-        contact.telephone = telephone
+    def edit_contact_by_name(self, name_to_edit, newName, newTelephone):
+        contact = Contact.query.filter_by(name=name_to_edit).first()
+        contact.name = newName
+        contact.telephone = newTelephone
         db.session.commit()
+        return self.create_info_about_edit(name_to_edit, newName, newTelephone)
+
+    def create_info_about_edit(self, name_to_edit, newName, newTelephone):
+        info = {
+            'nameOfEditedContact': name_to_edit,
+            'newName': newName,
+            'newTelephone': newTelephone
+        }
+        return info

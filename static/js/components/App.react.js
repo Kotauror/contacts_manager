@@ -54,10 +54,15 @@ class App extends React.Component {
     this.setState({ contacts: result })
   }
 
-  editContact(oldContact, editedContact) {
+  editContact(editInformation) {
     const { contacts } = this.state
-    this.deleteContact(oldContact)
-    this.addContact(editedContact)
+    var contactToDelete = contacts.filter(contact => (contact.name == editInformation.nameOfEditedContact))
+    this.deleteContact(contactToDelete)
+    var newContact = {
+      name: editInformation.newName,
+      telephone: editInformation.newPhone
+    }
+    this.addContact(newContact)
   }
 }
 

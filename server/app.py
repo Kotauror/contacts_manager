@@ -29,17 +29,10 @@ def deleteContact():
     return contacts_book.contact_to_json(contact)
 
 @app.route('/contacts/edit', methods=['POST'])
-def findUserToEdit():
-    id_to_edit = request.form['id']
-    return render_template('edit.html', id_of_contact=id_to_edit)
-
-@app.route('/contacts/edit/id=<string:id_to_edit>', methods=['POST'])
-def editUser(id_to_edit):
-    try:
-        contacts_book.edit_contact_by_id(id_to_edit, request.form['name'], request.form['telephone'])
-        return redirect(url_for('index', message=Messages.EDIT_SUCCESS.value))
-    except:
-        return redirect(url_for('index', message=Messages.EDIT_ERROR.value))
+def editttContact():
+    req = request.get_json()
+    editInformation = contacts_book.edit_contact_by_name(req['oldContactName'], req['newContactName'], req['newContactTelephone'])
+    return json.dumps(editInformation)
 
 if __name__ == '__main__':
     app.run(debug=True)

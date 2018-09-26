@@ -22,6 +22,18 @@ class Api {
     })
     .then((response) => { return response.data })
   }
+
+  static editContact(oldName, oldPhone, newName, newPhone) {
+    return axios.post('/contacts/edit', {
+      "oldContactName": oldName,
+      "oldContactTelephone": oldPhone,
+      "newContactName": newName,
+      "newContactTelephone": newPhone
+    })
+    .then((response) => { return response.data })
+  }
+
+
 }
 
 export default Api
