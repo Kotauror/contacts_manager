@@ -21,9 +21,15 @@ describe('Contact', () => {
     expect(contact).toMatchSnapshot();
   });
 
-  it('changes the disable status', () => {
+  it('changes the disable status when click on edit', () => {
     contact.instance().handleEditClick()
 
     expect(contact.instance().state.disable).toEqual(false)
+  })
+
+  it('changes the disable status to true when click on save', () => {
+    contact.instance().handleSave()
+
+    expect(contact.instance().state.disable).toEqual(true)
   })
 });

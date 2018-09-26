@@ -2,6 +2,7 @@ import React from "react";
 import Api from './Api';
 import DeleteContact from './DeleteContact.react'
 import EditContact from './EditContact.react'
+import SaveContact from './SaveContact.react'
 
 class Contact extends React.Component {
   constructor() {
@@ -32,6 +33,9 @@ class Contact extends React.Component {
         <EditContact
           onClick={(e) => this.handleEditClick()}
         />
+        <SaveContact
+          onClick={(e) => this.handleSave()}
+        />
         <DeleteContact
           onClick={(e) => this.handleDelete(e)}
         />
@@ -49,6 +53,10 @@ class Contact extends React.Component {
 
   handleEditClick() {
     this.setState({disable: !this.state.disable})
+  }
+
+  handleSave() {
+    this.setState({disable: true})
   }
 
   handleDelete(event) {
