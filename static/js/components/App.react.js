@@ -22,7 +22,7 @@ class App extends React.Component {
       <div>
         <h1> Welcome to Contacts Manager</h1>
         <ContactForm
-          onAddContact={(c) => this.addContact(c)}
+          onAddContact={(contact) => this.addContact(contact)}
         />
         <div className="contacts-list">
           { this.state.contacts.map(contact => {
@@ -33,6 +33,7 @@ class App extends React.Component {
                   id={contact.id}
                   telephone={contact.telephone}
                   onDeleteContact={(c) => this.deleteContact(c)}
+                  onEditContact={(oldContact, newContact) => this.editContact(oldContact, newContact)}
                 />
               )
             }) }
