@@ -37,11 +37,21 @@ describe('App', () => {
       expect(app.instance().state.contacts[0].name).toEqual("Kota")
     })
 
-    it('add removes contact from state', () => {
+    it('removes contact from state', () => {
       app.instance().addContact(contact)
       app.instance().deleteContact(contact)
 
       expect(app.instance().state.contacts.length).toEqual(0)
+    })
+
+    it('edits the contact in state', () => {
+      var editedContact = {name: "Psotka", telephone: "999"}
+      app.instance().addContact(contact)
+      app.instance().editContact(contact, editedContact)
+
+      expect(app.instance().state.contacts.length).toEqual(1)
+      expect(app.instance().state.contacts[0].name).toEqual("Psotka")
+      expect(app.instance().state.contacts[0].telephone).toEqual("999")
     })
   })
 
@@ -59,7 +69,7 @@ describe('App', () => {
     })
   })
 
-  describe('when adding a contact via website - integration test', () => {
+  describe('integration tests', () => {
 
     const appWithChildren = mount(<App />)
 
@@ -73,8 +83,8 @@ describe('App', () => {
       appWithChildren.setState({contacts: []});
     })
 
-    it('adds a new contact to the state', () => {
-      expect(appWithChildren.state().contacts.length).toEqual(1);
-    });
+    // it('adds a new contact to the state', () => {
+    //   expect(appWithChildren.state().contacts.length).toEqual(1);
+    // });
   });
 });

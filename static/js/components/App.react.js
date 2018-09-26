@@ -52,6 +52,12 @@ class App extends React.Component {
     var result = contacts.filter(contact => !(contact.name == contactToRemove.name))
     this.setState({ contacts: result })
   }
+
+  editContact(oldContact, editedContact) {
+    const { contacts } = this.state
+    this.deleteContact(oldContact)
+    this.addContact(editedContact)
+  }
 }
 
 export default App;
