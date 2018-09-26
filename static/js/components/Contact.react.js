@@ -57,7 +57,20 @@ class Contact extends React.Component {
 
   handleSave(e) {
     this.setState({disable: true})
-    // Api.editContact(this.props.name, this.props.telephone, this.state.newName, this.state.newTelephone)
+    var oldContact = {
+      name: this.props.name,
+      telephone: this.props.telephone
+    }
+    var newContact = {
+      name: this.state.newName,
+      telephone: this.state.newTelephone
+    }
+
+    Api.editContact(oldContact, newContact)
+    .then(editInformation => {
+      this.props.onEditContact(editInformation)
+    })
+    
     this.clearDataInState()
   }
 
