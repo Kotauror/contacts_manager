@@ -34,7 +34,7 @@ class Contact extends React.Component {
           onClick={(e) => this.handleEditClick()}
         />
         <SaveContact
-          onClick={(e) => this.handleSave()}
+          onClick={(e) => this.handleSave(e)}
         />
         <DeleteContact
           onClick={(e) => this.handleDelete(e)}
@@ -55,16 +55,22 @@ class Contact extends React.Component {
     this.setState({disable: !this.state.disable})
   }
 
-  handleSave() {
+  handleSave(e) {
     this.setState({disable: true})
+    // Api.editContact(this.props.name, this.props.telephone, this.state.newName, this.state.newTelephone)
+    this.clearDataInState()
   }
 
-  handleDelete(event) {
-    event.preventDefault()
+  handleDelete(e) {
     Api.deleteContact(this.props.name, this.props.telephone)
     .then(contact => {
         this.props.onDeleteContact(contact)
     })
+  }
+
+  clearDataInState() {
+    this.state.newName = ""
+    this.state.newTelephone = ""
   }
 }
 

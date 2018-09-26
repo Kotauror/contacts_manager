@@ -32,4 +32,13 @@ describe('Contact', () => {
 
     expect(contact.instance().state.disable).toEqual(true)
   })
+
+  it('clears temporary data in state after saving', () => {
+    contact.setState({newName: "name", newTelephone: "1111"});
+    contact.instance().handleSave()
+
+    expect(contact.instance().state.newName).toEqual("")
+    expect(contact.instance().state.newTelephone).toEqual("")
+  })
+
 });
