@@ -26,7 +26,7 @@ class TestEndToEnd(unittest.TestCase):
         driver.find_element_by_class_name("btn-add").click()
         time.sleep(1)
 
-        assert ("JustynaTestPhone" in driver.page_source)
+        assert ("Justyna" in driver.page_source)
 
     def test_delete_contact(self):
         self.setup_test()
@@ -40,17 +40,17 @@ class TestEndToEnd(unittest.TestCase):
 
         assert not ("kocia" in driver.page_source)
 
-    # def test_edit_contact(self):
-    #     self.setup_test()
-    #     driver = self.get_driver()
-    #     driver.find_element_by_id("form-name").send_keys("Another fake")
-    #     driver.find_element_by_id("form-telephone").send_keys("222")
-    #     driver.find_element_by_id("submit").click()
-    #     driver.find_element_by_id("edit-Another fake").click()
-    #     driver.find_element_by_id("form-name").send_keys("Edited fake contact")
-    #     driver.find_element_by_id("form-telephone").send_keys("444")
-    #     driver.find_element_by_id("submit").click()
-    #
-    #     assert not ("Another fake contact" in driver.page_source)
-    #     assert ("Edited fake contact" in driver.page_source)
-    #     assert ("Contact edited successfully" in driver.page_source)
+    def test_edit_contact(self):
+        self.setup_test()
+        driver = self.get_driver()
+        driver.find_element_by_class_name("input-name").send_keys("Another fake")
+        driver.find_element_by_class_name("input-Phone").send_keys("222")
+        driver.find_element_by_class_name("btn-add").click()
+        time.sleep(1)
+        driver.find_element_by_id("edit_button").click()
+        driver.find_element_by_id("nameInput").send_keys("Edited fake contact")
+        driver.find_element_by_id("telephoneInput").send_keys("444")
+        driver.find_element_by_id("save_button").click()
+        time.sleep(1)
+        assert not ("Another fake contact" in driver.page_source)
+        assert ("Another fakeEdited fake contact" in driver.page_source)

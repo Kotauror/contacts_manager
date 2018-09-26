@@ -23,12 +23,14 @@ class Contact extends React.Component {
            disabled={this.state.disable}
            defaultValue={this.props.name}
            onChange={(e) => this.handleChangeName(e.target.value)}
+           id="nameInput"
          />
          <input
            type="text"
            disabled={this.state.disable}
            defaultValue={this.props.telephone}
            onChange={(e) => this.handleChangeTelephone(e.target.value)}
+           id="telephoneInput"
           />
         <EditContact
           onClick={(e) => this.handleEditClick()}
