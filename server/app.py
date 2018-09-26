@@ -31,7 +31,7 @@ def deleteContact():
 @app.route('/contacts/edit', methods=['POST'])
 def editttContact():
     req = request.get_json()
-    infoAboutEdit = contacts_book.edit_contact_by_name(req['oldName'], req['oldPhone'], req['newName'], req['newPhone'])
+    infoAboutEdit = contacts_book.edit_contact_by_name(req['oldName'], req['oldTelephone'], req['newName'], req['newTelephone'])
     return json.dumps(infoAboutEdit)
 
 if __name__ == '__main__':
