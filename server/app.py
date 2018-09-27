@@ -25,7 +25,7 @@ def addContact():
 @app.route('/contacts/delete', methods=['POST'])
 def deleteContact():
     req = request.get_json()
-    contact = contacts_book.delete_contact_by_name(req['name'])
+    contact = contacts_book.delete_contact(req['id'])
     return contacts_book.contact_to_json(contact)
 
 @app.route('/contacts/edit', methods=['POST'])

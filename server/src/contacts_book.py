@@ -38,8 +38,8 @@ class ContactsBook():
         db.session.commit()
         return Contact.query.filter_by(name=name).first()
 
-    def delete_contact_by_name(self, name_to_delete):
-        contact = Contact.query.filter_by(name=name_to_delete).first()
+    def delete_contact(self, id):
+        contact = Contact.query.filter_by(id=id).first()
         db.session.delete(contact)
         db.session.commit()
         return contact

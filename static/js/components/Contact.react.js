@@ -70,7 +70,7 @@ class Contact extends React.Component {
   }
 
   handleDelete(e) {
-    Api.deleteContact(this.props.name, this.props.telephone)
+    Api.deleteContact(this.props.id)
     .then(contact => {
         this.props.onDeleteContact(contact)
     })

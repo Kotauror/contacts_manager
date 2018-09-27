@@ -44,11 +44,11 @@ class TestContactsBook():
         assert contact.name == "Justynka"
         assert contacts_book.get_contacts()[0].name == "Justynka"
 
-    def test_remove_contact(self):
+    def test_delete_contact(self):
         self.setup_test()
         contacts_book = self.get_contacts_book()
         contacts_book.add_contact("Igor", "123456")
-        contacts_book.delete_contact_by_name("Igor")
+        contacts_book.delete_contact(1)
 
         assert len(contacts_book.get_contacts()) == 0
 
