@@ -62,10 +62,11 @@ class App extends React.Component {
     const { contacts } = this.state
     contacts.map(contact => {
       if (contact.id == editInformation.idOfEditedContact) {
-        contact.name = editInformation.newName,
-        contact.telephone = editInformation.newTelephone
+        contact.name = editInformation.nameAfterEdit,
+        contact.telephone = editInformation.telephoneAfterEdit
       }
     })
+    console.log(contacts)
     this.setState({ contacts })
   }
 }

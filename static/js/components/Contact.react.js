@@ -78,8 +78,7 @@ class Contact extends React.Component {
   }
 
   clearDataInState() {
-    this.state.newName = ""
-    this.state.newTelephone = ""
+    this.setState({newName: "", newTelephone: ""})
   }
 
   getNameAfterEdit() {

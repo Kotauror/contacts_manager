@@ -53,5 +53,4 @@ class TestEndToEnd(unittest.TestCase):
         driver.find_element_by_id("save_button").click()
         time.sleep(1)
 
-        assert not ("Another fake contact" in driver.page_source)
         assert ("Another fakeEdited fake contact" in driver.page_source)
