@@ -1,10 +1,10 @@
+import sys
+sys.path.insert(0, '../src/')
 import config, create_app
 from contacts_book import ContactsBook
 from flask_sqlalchemy import SQLAlchemy
 import pytest
 from settings import db
-import sys
-sys.path.insert(0, '../src/')
 
 class TestContactsBook():
 

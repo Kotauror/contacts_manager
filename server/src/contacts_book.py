@@ -1,7 +1,7 @@
-import json
-from settings import db
 import sys
 sys.path.append('../')
+import json
+from settings import db
 from src.contact import Contact
 
 class ContactsBook():
