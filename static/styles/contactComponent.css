@@ -1,0 +1,14 @@
+#nameInput, #telephoneInput {
+  font-size: 0.7em;
+  height: 2em;
+  width: 15em;
+}
+
+input[type="text"]:disabled {
+    background: #e6e6e6;
+    color: #545050;
+}
+
+input[type="text"]:enabled {
+    background: #f9f4a0;
+}

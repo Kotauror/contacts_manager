@@ -3,6 +3,7 @@ import Api from './Api';
 import Contact from './Contact.react';
 import ContactForm from './ContactForm.react';
 import React, { Component } from "react";
+import '../../styles/appComponent.css'
 
 class App extends React.Component {
   constructor() {
@@ -20,21 +21,24 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1> Welcome to Contacts Manager</h1>
+        <h1> Contacts Manager</h1>
         <ContactForm
           onAddContact={(contact) => this.addContact(contact)}
         />
         <div className="contacts-list">
-          { this.state.contacts.map(contact => {
+          { this.state.contacts.map((contact, index) => {
               return (
-                <Contact
-                  key={contact.id}
-                  name={contact.name}
-                  id={contact.id}
-                  telephone={contact.telephone}
-                  onDeleteContact={(c) => this.deleteContact(c)}
-                  onEditContact={(editInformation) => this.editContact(editInformation)}
-                />
+                <div className="single-contact">
+                  <p1>{index + 1}.</p1>
+                  <Contact
+                    key={contact.id}
+                    name={contact.name}
+                    id={contact.id}
+                    telephone={contact.telephone}
+                    onDeleteContact={(c) => this.deleteContact(c)}
+                    onEditContact={(editInformation) => this.editContact(editInformation)}
+                  />
+              </div>
               )
             }) }
         </div>

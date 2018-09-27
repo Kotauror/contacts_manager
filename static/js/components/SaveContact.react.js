@@ -1,4 +1,5 @@
 import React from "react";
+import '../../styles/saveContactComponent.css'
 
 class SaveContact extends React.Component {
 

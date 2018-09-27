@@ -1,6 +1,7 @@
 import Api from './Api';
 import React from "react";
 import { Form, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
+import '../../styles/contactFormComponent.css'
 
 class ContactForm extends React.Component {
   constructor() {
@@ -14,15 +15,15 @@ class ContactForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="contact-form">
         <form onSubmit={(e) => this.handleSubmit(e)}>
           <FormGroup>
-            <ControlLabel>Name</ControlLabel>
+            <ControlLabel>Name: </ControlLabel>
             <FormControl
               className='input-name'
               onChange={(e) => this.handleChangeName(e.target.value)}
             />
-            <ControlLabel>Phone</ControlLabel>
+          <ControlLabel>Phone: </ControlLabel>
             <FormControl
               className='input-phone'
               onChange={(e) => this.handleChangeTelephone(e.target.value)}

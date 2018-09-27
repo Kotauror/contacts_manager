@@ -3,6 +3,7 @@ import DeleteContact from './DeleteContact.react'
 import EditContact from './EditContact.react'
 import React from "react";
 import SaveContact from './SaveContact.react'
+import '../../styles/contactComponent.css'
 
 class Contact extends React.Component {
   constructor() {
