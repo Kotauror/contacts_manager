@@ -1,7 +1,7 @@
+from contact import *
 import pytest
 import sys
 sys.path.insert(0, '../src/')
-from contact import *
 
 class TestContact():
 

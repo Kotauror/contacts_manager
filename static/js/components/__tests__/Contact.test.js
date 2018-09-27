@@ -1,6 +1,6 @@
-import React from 'react';
-import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import Enzyme, { shallow } from 'enzyme';
+import React from 'react';
 
 Enzyme.configure({adapter: new Adapter()});
 
@@ -40,5 +40,4 @@ describe('Contact', () => {
     expect(contact.instance().state.newName).toEqual("")
     expect(contact.instance().state.newTelephone).toEqual("")
   })
-
 });

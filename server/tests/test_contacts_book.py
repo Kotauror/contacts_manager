@@ -1,11 +1,10 @@
-import pytest
-import sys
-from werkzeug.datastructures import ImmutableMultiDict
-sys.path.insert(0, '../src/')
-from flask_sqlalchemy import SQLAlchemy
-from contacts_book import ContactsBook
 import config, create_app
+from contacts_book import ContactsBook
+from flask_sqlalchemy import SQLAlchemy
+import pytest
 from settings import db
+import sys
+sys.path.insert(0, '../src/')
 
 class TestContactsBook():
 

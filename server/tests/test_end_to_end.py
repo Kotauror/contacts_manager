@@ -1,9 +1,9 @@
+from flask import request
 import pytest
-import unittest
 import time
 from selenium import webdriver
-from flask import request
 from settings import db
+import unittest
 
 class TestEndToEnd(unittest.TestCase):
 
@@ -52,5 +52,6 @@ class TestEndToEnd(unittest.TestCase):
         driver.find_element_by_id("telephoneInput").send_keys("444")
         driver.find_element_by_id("save_button").click()
         time.sleep(1)
+        
         assert not ("Another fake contact" in driver.page_source)
         assert ("Another fakeEdited fake contact" in driver.page_source)

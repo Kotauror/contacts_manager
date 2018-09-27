@@ -1,7 +1,7 @@
-import sys
 import json
-sys.path.append('../')
 from settings import db
+import sys
+sys.path.append('../')
 from src.contact import Contact
 
 class ContactsBook():
