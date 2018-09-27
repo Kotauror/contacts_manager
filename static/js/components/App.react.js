@@ -1,8 +1,8 @@
 import React, { Component } from "react";
+import axios from 'axios';
+import Api from './Api';
 import Contact from './Contact.react';
 import ContactForm from './ContactForm.react';
-import Api from './Api';
-import axios from 'axios';
 
 class App extends React.Component {
   constructor() {
@@ -57,7 +57,7 @@ class App extends React.Component {
   editContact(editInformation) {
     const { contacts } = this.state
     contacts.map(contact => {
-      if (contact.name == editInformation.oldName) {
+      if (contact.id == editInformation.idOfEditedContact) {
         contact.name = editInformation.newName,
         contact.telephone = editInformation.newTelephone
       }

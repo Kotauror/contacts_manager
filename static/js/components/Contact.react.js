@@ -59,11 +59,10 @@ class Contact extends React.Component {
 
   handleSave(e) {
     this.setState({disable: true})
+    var idOfEditedContact = this.props.id
     var nameAfterEdit = this.getNameAfterEdit();
     var telephoneAfterEdit = this.getTelephoneAfterEdit();
-    var nameBeforeEdit= this.props.name
-    var telephoneBeforeEdit = this.props.telephone
-    Api.editContact(nameBeforeEdit, telephoneBeforeEdit, nameAfterEdit, telephoneAfterEdit)
+    Api.editContact(idOfEditedContact, nameAfterEdit, telephoneAfterEdit)
     .then(editInformation => {
       this.props.onEditContact(editInformation)
     })

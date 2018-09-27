@@ -52,15 +52,15 @@ class TestContactsBook():
 
         assert len(contacts_book.get_contacts()) == 0
 
-    def test_edit_contact_by_name_both_values(self):
+    def test_edit_contact(self):
         self.setup_test()
         contacts_book = self.get_contacts_book()
         contacts_book.add_contact("Igor", "123456")
-        actual = contacts_book.edit_contact_by_name("Igor", "123456", "Myszek", "9999")
+        actual = contacts_book.edit_contact("1", "Myszek", "9999")
         expected = {
-            'oldName': "Igor",
-            'newName': "Myszek",
-            'newTelephone': "9999"
+            'idOfEditedContact': "1",
+            'nameAfterEdit': "Myszek",
+            'telephoneAfterEdit': "9999"
             }
 
         assert contacts_book.get_contacts()[0].name == "Myszek"

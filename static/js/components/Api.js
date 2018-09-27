@@ -23,12 +23,11 @@ class Api {
     .then((response) => { return response.data })
   }
 
-  static editContact(nameBeforeEdit, telephoneBeforeEdit, nameAfterEdit, telephoneAfterEdit) {
+  static editContact(idOfEditedContact, nameAfterEdit, telephoneAfterEdit) {
     return axios.post('/contacts/edit', {
-      "oldName": nameBeforeEdit,
-      "oldTelephone": telephoneBeforeEdit,
-      "newName": nameAfterEdit,
-      "newTelephone": telephoneAfterEdit
+      "idOfEditedContact": idOfEditedContact,
+      "nameAfterEdit": nameAfterEdit,
+      "telephoneAfterEdit": telephoneAfterEdit
     })
     .then((response) => { return response.data })
   }
