@@ -20,6 +20,7 @@
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "jest-cli": "^20.0.4",
+    "jest-css-modules": "^1.1.0",
     "react": "^16.5.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.5.0",
@@ -32,6 +33,11 @@
       "es2015",
       "react"
     ]
+  },
+  "jest": {
+    "moduleNameMapper": {
+    "\\.(css)$": "<rootDir>/node_modules/jest-css-modules"
+    }
   },
   "dependencies": {
     "axios": "^0.18.0"
