@@ -33,7 +33,7 @@ class Contact extends React.Component {
            id="telephoneInput"
           />
         <EditContact
-          onClick={(e) => this.handleEditClick()}
+          onClick={(e) => this.handleEdit()}
         />
         <SaveContact
           onClick={(e) => this.handleSave(e)}
@@ -53,22 +53,20 @@ class Contact extends React.Component {
     this.setState({newTelephone});
   }
 
-  handleEditClick() {
+  handleEdit() {
     this.setState({disable: !this.state.disable})
   }
 
   handleSave(e) {
     this.setState({disable: true})
-    var oldName = this.props.name
-    var oldTelephone = this.props.telephone
-    var newName = this.state.newName
-    var newTelephone = this.state.newTelephone
-
-    Api.editContact(oldName, oldTelephone, newName, newTelephone)
+    var nameAfterEdit = this.getNameAfterEdit();
+    var telephoneAfterEdit = this.getTelephoneAfterEdit();
+    var nameBeforeEdit= this.props.name
+    var telephoneBeforeEdit = this.props.telephone
+    Api.editContact(nameBeforeEdit, telephoneBeforeEdit, nameAfterEdit, telephoneAfterEdit)
     .then(editInformation => {
       this.props.onEditContact(editInformation)
     })
-
     this.clearDataInState()
   }
 
@@ -82,6 +80,14 @@ class Contact extends React.Component {
   clearDataInState() {
     this.state.newName = ""
     this.state.newTelephone = ""
+  }
+
+  getNameAfterEdit() {
+    return (this.state.newName.length == 0 ? this.props.name : this.state.newName)
+  }
+
+  getTelephoneAfterEdit() {
+    return (this.state.newTelephone.length == 0 ? this.props.telephone : this.state.newTelephone)
   }
 }
 

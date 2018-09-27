@@ -46,10 +46,8 @@ class ContactsBook():
 
     def edit_contact_by_name(self, old_name, old_telephone, new_name, new_telephone):
         contact = Contact.query.filter_by(name=old_name).first()
-        if (len(new_name)>0):
-            contact.name = new_name
-        if (len(new_telephone)>0):
-            contact.telephone = new_telephone
+        contact.name = new_name
+        contact.telephone = new_telephone
         db.session.commit()
         return self.inform_about_edit(old_name, contact.name, contact.telephone)
 

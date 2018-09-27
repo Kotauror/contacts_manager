@@ -22,7 +22,7 @@ describe('Contact', () => {
   });
 
   it('changes the disable status when click on edit', () => {
-    contact.instance().handleEditClick()
+    contact.instance().handleEdit()
 
     expect(contact.instance().state.disable).toEqual(false)
   })

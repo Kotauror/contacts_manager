@@ -66,18 +66,3 @@ class TestContactsBook():
         assert contacts_book.get_contacts()[0].name == "Myszek"
         assert contacts_book.get_contacts()[0].telephone == "9999"
         assert actual == expected
-
-    def test_edit_contact_by_name_one_value(self):
-        self.setup_test()
-        contacts_book = self.get_contacts_book()
-        contacts_book.add_contact("Igor", "123456")
-        actual = contacts_book.edit_contact_by_name("Igor", "123456", "", "9999")
-        expected = {
-            'oldName': "Igor",
-            'newName': "Igor",
-            'newTelephone': "9999"
-            }
-
-        assert contacts_book.get_contacts()[0].name == "Igor"
-        assert contacts_book.get_contacts()[0].telephone == "9999"
-        assert actual == expected

@@ -33,7 +33,7 @@ class App extends React.Component {
                   id={contact.id}
                   telephone={contact.telephone}
                   onDeleteContact={(c) => this.deleteContact(c)}
-                  onEditContact={(oldContact, newContact) => this.editContact(oldContact, newContact)}
+                  onEditContact={(editInformation) => this.editContact(editInformation)}
                 />
               )
             }) }
