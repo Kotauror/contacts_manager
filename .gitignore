@@ -6,10 +6,10 @@
 /.pytest_cache/
 *.swp
 /env/
-/static/dist
-/static/node_modules
-/static/package-lock.json
+/frontend/dist
+/frontend/node_modules
+/frontend/package-lock.json
 /server/__pycache__/
-/static/js/components/__tests__/__snapshots__/
+/frontend/js/components/__tests__/__snapshots__/
 /server/tests/__pycache__
 /server/src/__pycache__
