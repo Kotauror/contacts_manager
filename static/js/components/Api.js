@@ -13,6 +13,7 @@ class Api {
       "telephone": telephone,
     })
     .then((response) => { return response.data })
+    .catch((error) => { alert("Error in adding contact") })
   }
 
   static deleteContact(id) {
@@ -20,6 +21,7 @@ class Api {
       "id": id
     })
     .then((response) => { return response.data })
+    .catch((error) => { alert("Error in deleting contact") })
   }
 
   static editContact(idOfEditedContact, nameAfterEdit, telephoneAfterEdit) {
@@ -29,6 +31,7 @@ class Api {
       "telephoneAfterEdit": telephoneAfterEdit
     })
     .then((response) => { return response.data })
+    .catch((error) => { alert("Name and telephone must be unique") })
   }
 }
 

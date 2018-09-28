@@ -66,7 +66,6 @@ class App extends React.Component {
         contact.telephone = editInformation.telephoneAfterEdit
       }
     })
-    console.log(contacts)
     this.setState({ contacts })
   }
 }

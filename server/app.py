@@ -27,7 +27,7 @@ def deleteContact():
     return contacts_book.contact_to_json(contact)
 
 @app.route('/contacts/edit', methods=['POST'])
-def editttContact():
+def editContact():
     req = request.get_json()
     infoAboutEdit = contacts_book.edit_contact(req['idOfEditedContact'], req['nameAfterEdit'], req['telephoneAfterEdit'])
     return json.dumps(infoAboutEdit)
