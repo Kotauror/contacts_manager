@@ -3,7 +3,7 @@ import axios from 'axios';
 import Enzyme, { shallow } from 'enzyme';
 import { mount } from 'enzyme';
 import React from 'react';
-import Api from '../Api';
+import Api from '../../Api';
 import App from '../App.react';
 import ContactForm from '../ContactForm.react';
 
