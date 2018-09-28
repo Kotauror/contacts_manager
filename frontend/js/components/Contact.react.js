@@ -1,4 +1,4 @@
-import Api from './Api';
+import Api from '../Api';
 import DeleteContact from './DeleteContact.react'
 import EditContact from './EditContact.react'
 import React from "react";
