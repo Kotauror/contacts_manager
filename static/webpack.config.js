@@ -5,7 +5,6 @@ const config = {
         path: __dirname + '/dist',
         filename: 'bundle.js',
     },
-    externals: ['axios'],
     resolve: {
         extensions: ['.js', '.jsx', '.css']
     },
@@ -15,6 +14,10 @@ const config = {
           test: /\.js?/,
           exclude: /node_modules/,
           use: 'babel-loader'
+        },
+        {
+          test: /\.css/,
+          loader: 'style-loader!css-loader'
         }
       ]
     }
