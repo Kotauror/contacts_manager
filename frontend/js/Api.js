@@ -4,7 +4,8 @@ class Api {
 
   static getContacts() {
     return axios.get('/contacts')
-      .then((response) => { return response.data })
+      .then((response) => {
+        return response.data })
   }
 
   static addContact(name, telephone) {
