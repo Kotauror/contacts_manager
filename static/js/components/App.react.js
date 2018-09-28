@@ -28,7 +28,7 @@ class App extends React.Component {
         <div className="contacts-list">
           { this.state.contacts.map((contact, index) => {
               return (
-                <div className="single-contact">
+                <div className="single-contact" key={index}>
                   <p1>{index + 1}.</p1>
                   <Contact
                     key={contact.id}
