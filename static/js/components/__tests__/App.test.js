@@ -46,9 +46,9 @@ describe('App', () => {
 
     it('edits the contact in state', () => {
       var editInfo = {
-          'oldName': "Kota",
-          'newName': "Jusia",
-          'newTelephone': "000000"
+          'ifOfEditedContact': "0",
+          'nameAfterEdit': "Jusia",
+          'telephoneAfterEdit': "000000"
       }
       app.instance().addContact(contact)
       app.instance().editContact(editInfo)
