@@ -21,16 +21,18 @@ class TestEndToEnd(unittest.TestCase):
         driver.get("http://127.0.0.1:5000")
         return driver
 
+    def wait_for_element_to_appear(self, driver):
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.ID, "nameInput"))
+        )
+
     def test_add_contact_to_contacts(self):
         self.setup_test()
         driver = self.get_driver()
         driver.find_element_by_class_name("input-name").send_keys("Justyna")
         driver.find_element_by_class_name("input-Phone").send_keys("TestPhone")
         driver.find_element_by_class_name("btn-add").click()
-
-        element = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.ID, "nameInput"))
-        )
+        self.wait_for_element_to_appear(driver)
 
         assert ("Justyna" in driver.page_source)
 
@@ -40,11 +42,7 @@ class TestEndToEnd(unittest.TestCase):
         driver.find_element_by_class_name("input-name").send_keys("kocia")
         driver.find_element_by_class_name("input-Phone").send_keys("000")
         driver.find_element_by_class_name("btn-add").click()
-
-        element = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.ID, "nameInput"))
-        )
-
+        self.wait_for_element_to_appear(driver)
         driver.find_element_by_id("delete_button").click()
 
         element = WebDriverWait(driver, 10).until_not(
@@ -59,11 +57,7 @@ class TestEndToEnd(unittest.TestCase):
         driver.find_element_by_class_name("input-name").send_keys("Another fake")
         driver.find_element_by_class_name("input-Phone").send_keys("222")
         driver.find_element_by_class_name("btn-add").click()
-
-        element = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.ID, "nameInput"))
-        )
-
+        self.wait_for_element_to_appear(driver)
         driver.find_element_by_id("edit_button").click()
         driver.find_element_by_id("nameInput").send_keys("Edited fake contact")
         driver.find_element_by_id("telephoneInput").send_keys("444")
