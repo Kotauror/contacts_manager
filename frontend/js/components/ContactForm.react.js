@@ -16,7 +16,7 @@ class ContactForm extends React.Component {
   render() {
     return (
       <div className="contact-form">
-        <form onSubmit={(e) => this.handleSubmit(e)}>
+        <form>
           <FormGroup>
             <ControlLabel>Name: </ControlLabel>
             <FormControl
@@ -29,7 +29,7 @@ class ContactForm extends React.Component {
               onChange={(e) => this.handleChangeTelephone(e.target.value)}
             />
           </FormGroup>
-          <Button className='btn-add' type="submit">Submit</Button>
+          <Button className='btn-add' type="submit" onClick={(e) => this.handleSubmit(e)}>Submit</Button>
         </form>
       </div>
     )
