@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Api from '../Api';
+import Api from './Api';
 import Contact from './Contact.react';
 import ContactForm from './ContactForm.react';
 import React, { Component } from "react";
@@ -25,7 +25,7 @@ class App extends React.Component {
         <ContactForm
           onAddContact={(contact) => this.addContact(contact)}
         />
-        <div className="contacts-list">
+          <div className="contacts-list">
           { this.state.contacts.map((contact, index) => {
               return (
                 <div className="single-contact" key={index}>

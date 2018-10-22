@@ -1,4 +1,4 @@
-import Api from '../Api';
+import Api from './Api';
 import React from "react";
 import { Form, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 import '../../styles/contactFormComponent.css'
