@@ -5,6 +5,7 @@
 
 ## Run the app
 - clone the repo
+- cd `server`
 - run `flask run` at the root level
 - open `http://127.0.0.1:5000/contacts` in a browser
 
@@ -13,13 +14,17 @@
 
 driver = webdriver.Chrome("/usr/local/bin/chromedriver")`
 
-- go to `server/tests`
+- cd `server/tests`
 - run `pytest`
 
 ## Run the tests on frontend
 
-- go to `static`
+- cd `frontend`
 - run `jest -u`
+
+## Running the webpack
+- cd `frontend`
+- run `npm run watch`
 
 ## Design
 
