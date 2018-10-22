@@ -7,7 +7,7 @@ import React from 'react';
 import App from '../App.react';
 import ContactForm from '../ContactForm.react';
 
-jest.mock("../../Api")
+jest.mock("../Api")
 
 Enzyme.configure({adapter: new Adapter()});
 
